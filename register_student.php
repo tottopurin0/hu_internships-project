@@ -194,7 +194,7 @@ $teachers = $conn->query('SELECT teacher_id, first_name, last_name, department F
       </div>
 
       <div class="actions">
-        <a class="back-link" href="/portal.php"><i class="fas fa-arrow-left me-1"></i> กลับไปหน้า Portal</a>
+        <a class="back-link" href="portal.php"><i class="fas fa-arrow-left me-1"></i> กลับไปหน้า Portal</a>
         <button class="btn btn-primary" type="submit"><i class="fas fa-user-plus me-1"></i> สมัครสมาชิก</button>
       </div>
     </form>

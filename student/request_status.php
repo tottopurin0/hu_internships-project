@@ -90,11 +90,23 @@ if (!$detail) {
 $page_title = 'สถานะคำขอ';
 require '../includes/header.php';
 ?>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title><?= $page_title ?? 'สถานะคำขอ' ?></title>
+    <link rel="stylesheet" href="/hu_internships-project/assets/css/style.css">
+    
+    </head>
+<body>
 
 <h1><i class="fas fa-tasks me-2" style="color:var(--swu-red)"></i>สถานะคำขอฝึกงาน</h1>
 
 <?php if ($detail):
     [$lbl, $cls] = status_label($detail['status_id']); ?>
+
+    <!DOCTYPE html>
+
+
   <div class="card card-form">
     <div class="card-header">
       <h2><i class="fas fa-file-alt me-2"></i>คำขอ #<?= (int)$detail['request_id'] ?></h2>
@@ -177,3 +189,6 @@ require '../includes/header.php';
 <?php endif; ?>
 
 <?php require '../includes/footer.php'; ?>
+</body>
+
+</html>

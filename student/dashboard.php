@@ -32,6 +32,17 @@ $page_title = 'หน้าหลักนิสิต';
 require '../includes/header.php';
 ?>
 
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title><?= $page_title ?? 'ระบบฝึกงาน' ?></title>
+    
+    <link rel="stylesheet" href="/hu_internships-project/assets/css/style.css">
+    
+    </head>
+<body>
+
 <h1><i class="fas fa-hand-sparkles me-2" style="color:var(--swu-red)"></i> สวัสดี <?= h($user['display_name']) ?></h1>
 <p class="muted"><i class="fas fa-id-card me-1"></i> รหัสนิสิต: <?= h($student_code) ?> · <?= h($user['major']) ?></p>
 
@@ -76,6 +87,10 @@ require '../includes/header.php';
       </tbody>
     </table>
   <?php endif; ?>
-</div>
+  </div>
 
-<?php require '../includes/footer.php'; ?>
+  <?php require __DIR__ . '/../includes/footer.php'; ?>
+
+</body>
+
+</html>

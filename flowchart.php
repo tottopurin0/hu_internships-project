@@ -1,132 +1,311 @@
-<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
+<?php include('includes/db_connect.php'); ?>
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ขั้นตอนการฝึกงาน | IS SWU</title>
-  <?php include __DIR__ . '/includes/public_head.php'; ?>
-  <style>
-    .page-hero {
-      background: linear-gradient(135deg, rgba(196,18,45,.95), rgba(33,37,41,.9));
-      color: #fff !important; padding: 80px 16px; text-align: center;
-    }
-    .page-hero * { color: #fff !important; }
-    .page-hero h1 { font-weight: 800; font-size: 36px; margin: 12px 0 8px; color: #fff !important; }
-    .page-hero p { opacity: .95; font-size: 16px; margin: 0; color: #fff !important; }
-    .page-hero i { color: #fff !important; }
-    .flow { max-width: 900px; margin: 0 auto; position: relative; padding: 24px 0; }
-    .flow::before {
-      content: ''; position: absolute; left: 40px; top: 0; bottom: 0;
-      width: 4px; background: linear-gradient(180deg, #c4122d, #9b111e);
-      border-radius: 2px;
-    }
-    .step { position: relative; padding-left: 90px; margin-bottom: 28px; }
-    .step-num {
-      position: absolute; left: 12px; top: 0;
-      width: 60px; height: 60px; border-radius: 50%;
-      background: linear-gradient(135deg, #c4122d, #9b111e);
-      color:#fff; display:flex; align-items:center; justify-content:center;
-      font-weight: 800; font-size: 24px;
-      box-shadow: 0 6px 18px rgba(196,18,45,.35);
-      border: 4px solid #fff;
-    }
-    .step-card {
-      background: #fff; border-radius: 14px; padding: 22px 24px;
-      box-shadow: 0 4px 14px rgba(0,0,0,.06);
-      border-left: 4px solid #c4122d;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .step-card:hover { transform: translateX(6px); box-shadow: 0 10px 24px rgba(0,0,0,.1); }
-    .step-card h5 { font-weight: 700; color: #c4122d; margin-bottom: 8px; }
-    .step-card p  { color: #555; margin: 0; line-height: 1.6; }
-    .step-card .role-chip {
-      display: inline-block; margin-top: 8px; padding: 3px 10px; border-radius: 999px;
-      background: #fff0f2; color: #c4122d; font-size: 12px; font-weight: 600;
-    }
-    .status-legend {
-      background: #fff; border-radius: 14px; padding: 24px;
-      box-shadow: 0 4px 14px rgba(0,0,0,.06); margin-top: 30px;
-    }
-    .status-legend h4 { color: #c4122d; font-weight: 700; margin-bottom: 16px; }
-    .status-item { display:flex; align-items:center; gap: 12px; padding: 8px 0; }
-    .badge-s {
-      display: inline-block; padding: 4px 12px; border-radius: 4px;
-      font-size: 13px; font-weight: 700; color: #fff; min-width: 110px; text-align: center;
-    }
-    .bs1{background:#6c757d;} .bs2{background:#0d6efd;} .bs3{background:#fd7e14;}
-    .bs4{background:#198754;} .bs9{background:#dc3545;}
-  </style>
+    <meta charset="UTF-8">
+    <title>ขั้นตอนการฝึกงาน</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ขั้นตอนการดำเนินงาน Internships - IS SWU</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS เฉพาะสำหรับหน้า Flowchart -->
+    <style>
+    /* แบนเนอร์ด้านบน */
+    /* แบนเนอร์ด้านบน */
+    .flowchart-hero {
+        background: linear-gradient(135deg, rgba(196, 18, 45, 0.9), rgba(33, 37, 41, 0.9)), url('./img/berner.jpg') center/cover;
+        padding: 80px 0;
+        /* <--- กลับมาใช้ 80px ธรรมดา */
+        color: white;
+        text-align: center;
+        margin-top: 0 !important;
+        margin-bottom: 40px;
+    }
+
+    /* ---------------- ไทม์ไลน์แนวตั้ง ---------------- */
+    .timeline-section {
+        position: relative;
+        padding: 20px 0;
+    }
+
+    /* เส้นแกนกลาง */
+    .timeline-section::before {
+        content: '';
+        position: absolute;
+        width: 3px;
+        background-color: #dee2e6;
+        top: 40px;
+        bottom: 40px;
+        left: 24px;
+    }
+
+    .timeline-step {
+        position: relative;
+        padding-left: 70px;
+        margin-bottom: 25px;
+    }
+
+    /* วงกลมตัวเลข */
+    .timeline-circle {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        left: 0;
+        top: 10px;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+
+    /* กล่องข้อความ */
+    .timeline-card {
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        padding: 20px 25px;
+        transition: 0.3s;
+    }
+
+    .timeline-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .doer-badge {
+        background-color: #6c757d;
+        color: white;
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 4px;
+    }
+
+    /* ป้ายสถานะสีสันต่างๆ */
+    .status-label {
+        font-size: 12px;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: bold;
+        color: white;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .bg-color-red {
+        background-color: #dc3545;
+    }
+
+    .bg-color-yellow {
+        background-color: #ffc107;
+        color: #000;
+    }
+
+    .bg-color-blue {
+        background-color: #0d6efd;
+    }
+
+    .bg-color-purple {
+        background-color: #6f42c1;
+    }
+
+    .bg-color-green {
+        background-color: #198754;
+    }
+
+    /* ---------------- กล่องแถบสถานะด้านขวา (Sticky) ---------------- */
+    .status-box-header {
+        background-color: #212529;
+        color: white;
+        padding: 15px;
+        font-weight: bold;
+        border-radius: 8px 8px 0 0;
+        font-size: 14px;
+    }
+
+    .status-list li {
+        border-bottom: 1px solid #eee;
+        padding: 12px 15px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .status-list li:last-child {
+        border-bottom: none;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .btn-red-login {
+        background-color: #c4122d;
+        color: white;
+        font-weight: bold;
+    }
+
+    .btn-red-login:hover {
+        background-color: #a00b22;
+        color: white;
+    }
+    </style>
+</head>
+
 <body class="bg-light">
-<?php include __DIR__ . '/includes/public_nav.php'; ?>
 
-<div class="page-hero">
-  <i class="fas fa-project-diagram fa-2x"></i>
-  <h1>ขั้นตอนการฝึกงาน</h1>
-  <p>ขั้นตอนการยื่นคำขอและดำเนินการฝึกงาน ของนิสิตสารสนเทศศึกษา</p>
-</div>
+    <!-- ดึง Navbar แบบ PHP -->
+    <?php include 'navbar.php'; ?>
 
-<div class="container py-5">
-
-  <div class="flow">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-card">
-        <h5><i class="fas fa-file-signature me-2"></i>ยื่นคำขอฝึกงาน</h5>
-        <p>นิสิตล็อกอินเข้าระบบ กรอกข้อมูลบริษัท ตำแหน่ง และช่วงเวลาที่ต้องการฝึกงาน พร้อมเลือกอาจารย์ที่ปรึกษา</p>
-        <span class="role-chip"><i class="fas fa-user-graduate me-1"></i>นิสิต</span>
-      </div>
+    <!-- แบนเนอร์หัวเรื่อง (Header) -->
+    <div class="flowchart-hero pb-5">
+        <div class="container py-4">
+            <h1 class="fw-bold mb-3"><i class="fas fa-project-diagram mb-2"></i><br>ขั้นตอนการดำเนินงาน Internship</h1>
+            <p class="mb-0 fs-6 fw-light">กระบวนการขอฝึกงานและสหกิจศึกษา หลักสูตรสารสนเทศศึกษา มศว</p>
+        </div>
     </div>
 
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-card">
-        <h5><i class="fas fa-user-check me-2"></i>อาจารย์ที่ปรึกษาพิจารณา</h5>
-        <p>อาจารย์ที่ปรึกษาตรวจสอบคำขอ อนุมัติหรือปฏิเสธ พร้อมระบุหมายเหตุ</p>
-        <span class="role-chip"><i class="fas fa-chalkboard-teacher me-1"></i>อาจารย์</span>
-      </div>
+    <!-- เนื้อหาหลัก -->
+    <div class="container py-5" style="min-height: 80vh;">
+        <div class="row g-5">
+
+            <!-- ฝั่งซ้าย: ไทม์ไลน์ขั้นตอน -->
+            <div class="col-lg-8">
+                <div class="timeline-section">
+
+                    <!-- ขั้นตอนที่ 1 -->
+                    <div class="timeline-step">
+                        <div class="timeline-circle bg-color-red">1</div>
+                        <div class="timeline-card border-start border-danger border-4">
+                            <h5 class="fw-bold text-danger"><i class="fas fa-edit"></i> นิสิตยื่นแบบฟอร์มขอฝึกงาน</h5>
+                            <p class="text-muted small mb-3">นิสิตเข้าสู่ระบบและคีย์ข้อมูลสถานประกอบการ,
+                                วันที่เริ่มต้น-สิ้นสุด ผ่านระบบ Web Form เพื่อให้ข้อมูลเข้าสู่ฐานข้อมูล</p>
+                            <span class="doer-badge"><i class="fas fa-user-graduate"></i> ผู้ดำเนินการ: นิสิต</span>
+                        </div>
+                    </div>
+
+                    <!-- ขั้นตอนที่ 2 -->
+                    <div class="timeline-step">
+                        <div class="timeline-circle bg-color-yellow">2</div>
+                        <div class="timeline-card border-start border-warning border-4">
+                            <h5 class="fw-bold text-warning" style="text-shadow: 1px 1px 1px rgba(0,0,0,0.1);"><i
+                                    class="fas fa-inbox"></i> รับเรื่องเข้าระบบ</h5>
+                            <p class="text-muted small mb-3">เจ้าหน้าที่คณะตรวจสอบความถูกต้องของข้อมูลเบื้องต้น
+                                และอัปเดตสถานะการรับเรื่อง</p>
+                            <div>
+                                <span class="status-label bg-color-yellow">สถานะ 1: รับเรื่องเข้าระบบ</span>
+                                <span class="doer-badge"><i class="fas fa-file-signature"></i> ผู้ดำเนินการ:
+                                    เจ้าหน้าที่</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ขั้นตอนที่ 3 -->
+                    <div class="timeline-step">
+                        <div class="timeline-circle bg-color-blue">3</div>
+                        <div class="timeline-card border-start border-primary border-4">
+                            <h5 class="fw-bold text-primary"><i class="fas fa-user-check"></i> อาจารย์ที่ปรึกษาพิจารณา
+                            </h5>
+                            <p class="text-muted small mb-3">อาจารย์ประจำหลักสูตร Login
+                                เข้าสู่ระบบเพื่อตรวจสอบรายละเอียดคำขอฝึกงาน หากเหมาะสมจะทำการกดอนุมัติ</p>
+                            <div>
+                                <span class="status-label bg-color-blue">สถานะ 2: อาจารย์ที่ปรึกษาอนุมัติ</span>
+                                <span class="doer-badge"><i class="fas fa-chalkboard-teacher"></i> ผู้ดำเนินการ:
+                                    อาจารย์</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ขั้นตอนที่ 4 -->
+                    <div class="timeline-step">
+                        <div class="timeline-circle bg-color-purple">4</div>
+                        <div class="timeline-card border-start border-4" style="border-color: #6f42c1 !important;">
+                            <h5 class="fw-bold" style="color: #6f42c1;"><i class="fas fa-file-export"></i> ออกใบส่งตัว
+                            </h5>
+                            <p class="text-muted small mb-3">เจ้าหน้าที่คณะจัดพิมพ์เอกสารหนังสือส่งตัวแบบเป็นทางการ
+                                เพื่อให้นิสิตนำไปยื่นให้กับสถานประกอบการ</p>
+                            <div>
+                                <span class="status-label bg-color-purple">สถานะ 3: ออกใบส่งตัวแล้ว</span>
+                                <span class="doer-badge"><i class="fas fa-file-signature"></i> ผู้ดำเนินการ:
+                                    เจ้าหน้าที่</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ขั้นตอนที่ 5 -->
+                    <div class="timeline-step">
+                        <div class="timeline-circle bg-color-green">5</div>
+                        <div class="timeline-card border-start border-success border-4">
+                            <h5 class="fw-bold text-success"><i class="fas fa-check-circle"></i> เสร็จสิ้นการฝึกงาน</h5>
+                            <p class="text-muted small mb-3">นิสิตปฏิบัติงานเสร็จสิ้น
+                                อาจารย์ประเมินผลการนิเทศน์สหกิจศึกษาและบันทึกผลลงระบบ</p>
+                            <div>
+                                <span class="status-label bg-color-green">สถานะ 4: ฝึกงานเสร็จสิ้น</span>
+                                <span class="doer-badge"><i class="fas fa-users"></i> ผู้ดำเนินการ: อาจารย์ /
+                                    เจ้าหน้าที่</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ฝั่งขวา: กล่องความหมายสถานะ (Sticky Box) -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm border-0 sticky-top" style="top: 100px;">
+                    <div class="status-box-header">
+                        <i class="fas fa-info-circle"></i> ความหมายของเลขสถานะ (Status)
+                    </div>
+                    <ul class="list-unstyled status-list bg-white m-0">
+                        <li><span class="dot bg-color-yellow"></span> 1 : รับเรื่องเข้าระบบ</li>
+                        <li><span class="dot bg-color-blue"></span> 2 : อาจารย์ที่ปรึกษาอนุมัติ</li>
+                        <li><span class="dot bg-color-purple"></span> 3 : ออกใบส่งตัวแล้ว</li>
+                        <li><span class="dot bg-color-green"></span> 4 : ฝึกงานเสร็จสิ้น</li>
+                        <li class="text-danger"><span class="dot bg-color-red"></span> 9 : ยกเลิก / ข้อมูลผิดพลาด</li>
+                    </ul>
+
+                    <div class="card-body bg-light rounded-bottom text-center">
+                        <p class="small text-muted mb-3 text-start">หากนิสิตพร้อมแล้ว
+                            สามารถเข้าสู่ระบบเพื่อยื่นคำร้องขอฝึกงานได้ทันที</p>
+
+                        <!-- ลิงก์ไปหน้า portal เลือกเข้าระบบ -->
+                        <a href="portal.php" class="btn btn-red-login w-100 py-2 mb-2">
+                            <i class="fas fa-sign-in-alt"></i> เข้าระบบยื่นคำร้องฝึกงาน
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-card">
-        <h5><i class="fas fa-envelope-open-text me-2"></i>เจ้าหน้าที่ออกใบส่งตัว</h5>
-        <p>เจ้าหน้าที่คณะออกเอกสารใบส่งตัวอย่างเป็นทางการ ส่งให้บริษัทต้นสังกัด</p>
-        <span class="role-chip"><i class="fas fa-file-invoice me-1"></i>เจ้าหน้าที่</span>
-      </div>
-    </div>
+    <!-- ดึง Footer แบบ PHP -->
+    <?php include 'footer.php'; ?>
 
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-card">
-        <h5><i class="fas fa-briefcase me-2"></i>ฝึกงาน ณ สถานประกอบการ</h5>
-        <p>นิสิตเริ่มฝึกงานตามเวลาที่กำหนด อาจารย์ออกนิเทศเพื่อติดตามผลและให้คำแนะนำ</p>
-        <span class="role-chip"><i class="fas fa-clipboard-check me-1"></i>อาจารย์นิเทศ</span>
-      </div>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <div class="step">
-      <div class="step-num">5</div>
-      <div class="step-card">
-        <h5><i class="fas fa-award me-2"></i>ประเมินผลและสรุปการฝึกงาน</h5>
-        <p>อาจารย์และเจ้าหน้าที่ประเมินผลการฝึกงาน พร้อมบันทึกคะแนนและเกรดลงในระบบ</p>
-        <span class="role-chip"><i class="fas fa-chart-bar me-1"></i>อาจารย์/เจ้าหน้าที่</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="status-legend">
-    <h4><i class="fas fa-tags me-2"></i>สถานะในระบบ</h4>
-    <div class="status-item"><span class="badge-s bs1">รอพิจารณา</span><span>นิสิตยื่นคำขอ รอให้อาจารย์ที่ปรึกษาตรวจสอบ</span></div>
-    <div class="status-item"><span class="badge-s bs2">อนุมัติ</span><span>อาจารย์ที่ปรึกษาอนุมัติคำขอแล้ว รอเจ้าหน้าที่ออกใบส่งตัว</span></div>
-    <div class="status-item"><span class="badge-s bs3">ออกใบส่งตัว</span><span>เจ้าหน้าที่ออกเอกสารใบส่งตัวให้บริษัท</span></div>
-    <div class="status-item"><span class="badge-s bs4">สิ้นสุดการฝึก</span><span>ฝึกงานจบสิ้น ประเมินผลเรียบร้อย</span></div>
-    <div class="status-item"><span class="badge-s bs9">ปฏิเสธ</span><span>คำขอไม่ผ่านการพิจารณา</span></div>
-  </div>
-
-</div>
-
-<?php include __DIR__ . '/includes/public_footer.php'; ?>
 </body>
+
 </html>

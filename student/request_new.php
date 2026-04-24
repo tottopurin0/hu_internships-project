@@ -56,6 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $page_title = 'ยื่นคำขอฝึกงาน';
 require '../includes/header.php';
 ?>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title><?= $page_title ?? 'ยื่นคำขอฝึกงาน' ?></title>
+    <link rel="stylesheet" href="/hu_internships-project/assets/css/style.css">
+    
+    </head>
+<body>
 
 <h1><i class="fas fa-file-signature me-2" style="color:var(--swu-red)"></i>ยื่นคำขอฝึกงาน</h1>
 
@@ -123,3 +132,7 @@ require '../includes/header.php';
 </div>
 
 <?php require '../includes/footer.php'; ?>
+
+</body>
+
+</html>
