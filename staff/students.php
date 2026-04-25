@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $gpa_val = $gpa ? (float)$gpa : null;
                 $adv_val = $advisor_id ?: null;
                 $stmt = $conn->prepare('INSERT INTO student (student_code, password, first_name, last_name, email, phone, faculty, major, gpa, advisor_id) VALUES (?,?,?,?,?,?,?,?,?,?)');
-                $stmt->bind_param('ssssssssdi', $code, $hash, $fname, $lname, $email, $phone, $faculty, $major, $gpa_val, $adv_val);
+                $stmt->bind_param('ssssssdisi', $fname, $lname, $email, $phone, $faculty, $major, $gpa_val, $adv_val, $hash, $id);
                 if ($stmt->execute()) {
                     $msg = 'เพิ่มนิสิตสำเร็จ';
                     $action = 'list';
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt->bind_param('ssssssssi', $fname, $lname, $email, $phone, $faculty, $major, $gpa_val, $adv_val, $hash, $id);
                 } else {
                     $stmt = $conn->prepare('UPDATE student SET first_name=?, last_name=?, email=?, phone=?, faculty=?, major=?, gpa=?, advisor_id=? WHERE student_id=?');
-                    $stmt->bind_param('ssssssdi', $fname, $lname, $email, $phone, $faculty, $major, $gpa_val, $adv_val, $id);
+                    $stmt->bind_param('ssssssdii', $fname, $lname, $email, $phone, $faculty, $major, $gpa_val, $adv_val, $id);
                 }
                 if ($stmt->execute()) {
                     $msg = 'แก้ไขนิสิตสำเร็จ';

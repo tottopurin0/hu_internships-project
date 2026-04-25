@@ -46,12 +46,12 @@ function status_label($id) {
 }
 
 // Helper: insert a status change log row
-function log_status_change(mysqli $conn, int $request_id, ?int $old_status, int $new_status, string $changed_by = '', string $changer_role = '', string $remark = '') {
+function log_status_change(mysqli $conn, int $request_id, ?int $old_status, int $new_status, ?string $changed_by = null, ?string $changer_role = null, ?string $remark = null) {
     $stmt = $conn->prepare(
         'INSERT INTO status_log (request_id, old_status_id, new_status_id, changed_by, changer_role, remark)
          VALUES (?, ?, ?, ?, ?, ?)'
     );
-    $stmt->bind_param('iisss', $request_id, $old_status, $new_status, $changed_by, $changer_role, $remark);
+    $stmt->bind_param('iiisss', $request_id, $old_status, $new_status, $changed_by, $changer_role, $remark);
     $stmt->execute();
     $stmt->close();
 }

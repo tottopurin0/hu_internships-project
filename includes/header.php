@@ -35,20 +35,18 @@ $current = basename($_SERVER['PHP_SELF']);
       <a href="request_new.php"             class="<?= $current==='request_new.php'?'active':'' ?>"> <i class="fas fa-file-signature me-1"></i> ยื่นคำขอ</a>
       <a href="request_status.php"          class="<?= $current==='request_status.php'?'active':'' ?>"><i class="fas fa-tasks me-1"></i> สถานะคำขอ</a>
     <?php elseif ($role === 'teacher'): ?>
-      <a href="/staff/dashboard.php"         class="<?= $current==='dashboard.php'?'active':'' ?>"><i class="fas fa-home me-1"></i> หน้าหลัก</a>
-      <a href="/staff/approve_requests.php"  class="<?= $current==='approve_requests.php'?'active':'' ?>"><i class="fas fa-check-circle me-1"></i> อนุมัติคำขอ</a>
-      <a href="/staff/supervision.php"       class="<?= $current==='supervision.php'?'active':'' ?>"><i class="fas fa-clipboard-check me-1"></i> บันทึกนิเทศ</a>
-      <a href="/staff/manage_activities.php" class="<?= $current==='manage_activities.php'?'active':'' ?>"><i class="fas fa-calendar-alt me-1"></i> จัดการกิจกรรม</a>
-      <a href="/staff/reports.php"           class="<?= $current==='reports.php'?'active':'' ?>"><i class="fas fa-chart-bar me-1"></i> รายงาน</a>
+      <a href="dashboard.php"         class="<?= $current==='dashboard.php'?'active':'' ?>"><i class="fas fa-home me-1"></i> หน้าหลัก</a>
+      <a href="approve_requests.php"  class="<?= $current==='approve_requests.php'?'active':'' ?>"><i class="fas fa-check-circle me-1"></i> อนุมัติคำขอ</a>
+      <a href="supervision.php"       class="<?= $current==='supervision.php'?'active':'' ?>"><i class="fas fa-clipboard-check me-1"></i> บันทึกนิเทศ</a>
+      <a href="reports.php"           class="<?= $current==='reports.php'?'active':'' ?>"><i class="fas fa-chart-bar me-1"></i> รายงาน</a>
     <?php elseif ($role === 'staff'): ?>
-      <a href="/staff/dashboard.php"        class="<?= $current==='dashboard.php'?'active':'' ?>"><i class="fas fa-home me-1"></i> หน้าหลัก</a>
-      <a href="/staff/students.php"         class="<?= $current==='students.php'?'active':'' ?>"><i class="fas fa-users me-1"></i> นิสิต</a>
-      <a href="/staff/teachers.php"         class="<?= $current==='teachers.php'?'active':'' ?>"><i class="fas fa-chalkboard-user me-1"></i> อาจารย์</a>
-      <a href="/staff/manage_staff.php"     class="<?= $current==='manage_staff.php'?'active':'' ?>"><i class="fas fa-id-badge me-1"></i> เจ้าหน้าที่</a>
-      <a href="/staff/companies.php"        class="<?= $current==='companies.php'?'active':'' ?>"><i class="fas fa-building me-1"></i> บริษัท</a>
-      <a href="/staff/issue_letter.php"     class="<?= $current==='issue_letter.php'?'active':'' ?>"><i class="fas fa-envelope-open-text me-1"></i> ใบส่งตัว</a>
-      <a href="/staff/manage_activities.php" class="<?= $current==='manage_activities.php'?'active':'' ?>"><i class="fas fa-calendar-alt me-1"></i> จัดการกิจกรรม</a>
-      <a href="/staff/reports.php"          class="<?= $current==='reports.php'?'active':'' ?>"><i class="fas fa-chart-bar me-1"></i> รายงาน</a>
+      <a href="dashboard.php"        class="<?= $current==='dashboard.php'?'active':'' ?>"><i class="fas fa-home me-1"></i> หน้าหลัก</a>
+      <a href="students.php"         class="<?= $current==='students.php'?'active':'' ?>"><i class="fas fa-users me-1"></i> นิสิต</a>
+      <a href="teachers.php"         class="<?= $current==='teachers.php'?'active':'' ?>"><i class="fas fa-chalkboard-user me-1"></i> อาจารย์</a>
+      <a href="manage_staff.php"     class="<?= $current==='manage_staff.php'?'active':'' ?>"><i class="fas fa-id-badge me-1"></i> เจ้าหน้าที่</a>
+      <a href="companies.php"        class="<?= $current==='companies.php'?'active':'' ?>"><i class="fas fa-building me-1"></i> บริษัท</a>
+      <a href="issue_letter.php"     class="<?= $current==='issue_letter.php'?'active':'' ?>"><i class="fas fa-envelope-open-text me-1"></i> ใบส่งตัว</a>
+      <a href="reports.php"          class="<?= $current==='reports.php'?'active':'' ?>"><i class="fas fa-chart-bar me-1"></i> รายงาน</a>
     <?php endif; ?>
   </nav>
 

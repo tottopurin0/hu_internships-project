@@ -104,4 +104,4 @@ require '../includes/header.php';
   <?php endif; ?>
 </div>
 
-<?php require '../includes/footer.php'; ?>
+

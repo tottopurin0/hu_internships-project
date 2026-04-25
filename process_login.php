@@ -87,11 +87,6 @@ switch ($role) {
             ];
         }
         break;
-
-    default:
-        $_SESSION['login_error'] = 'บทบาทไม่ถูกต้อง';
-        header('Location: login.php');
-        exit;
 }
 
 if (!$user_row) {
