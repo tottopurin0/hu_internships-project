@@ -37,59 +37,12 @@ require '../includes/header.php';
 <head>
     <meta charset="UTF-8">
     <title><?= $page_title ?? 'ระบบฝึกงาน' ?></title>
-    
     <link rel="stylesheet" href="/hu_internships-project/assets/css/style.css">
-    
-    </head>
 <body>
 
-<h1><i class="fas fa-hand-sparkles me-2" style="color:var(--swu-red)"></i> สวัสดี <?= h($user['display_name']) ?></h1>
-<p class="muted"><i class="fas fa-id-card me-1"></i> รหัสนิสิต: <?= h($student_code) ?> · <?= h($user['major']) ?></p>
 
-<div class="stats">
-  <div class="stat-card"><div class="num"><?= $counts['total'] ?></div><div>คำขอทั้งหมด</div></div>
-  <div class="stat-card"><div class="num"><?= $counts['pending'] ?></div><div>รออนุมัติ</div></div>
-  <div class="stat-card"><div class="num"><?= $counts['approved'] ?></div><div>อนุมัติ/ออกใบแล้ว</div></div>
-  <div class="stat-card"><div class="num"><?= $counts['completed'] ?></div><div>เสร็จสิ้น</div></div>
-</div>
 
-<div class="card card-table">
-  <div class="card-header">
-    <h2><i class="fas fa-list me-2"></i>คำขอฝึกงานล่าสุด</h2>
-    <div style="display: flex; gap: 10px;">
-      <a class="btn btn-primary" href="request_new.php"><i class="fas fa-plus me-1"></i> ยื่นคำขอใหม่</a>
-      <a class="btn btn-secondary" href="/staff/supervision.php"><i class="fas fa-clipboard-check me-1"></i> ดูรายการบันทึกนิเทศ</a>
     </div>
-  </div>
-
-  <?php if (!$requests): ?>
-    <p class="muted">ยังไม่มีคำขอฝึกงาน — <a href="request_new.php">เริ่มยื่นคำขอ</a></p>
-  <?php else: ?>
-    <table class="tbl">
-      <thead>
-        <tr>
-          <th>#</th><th>บริษัท</th><th>ตำแหน่ง</th>
-          <th>ช่วงฝึกงาน</th><th>สถานะ</th><th></th>
-        </tr>
-      </thead>
-      <tbody>
-      <?php foreach ($requests as $r):
         [$label, $class] = status_label($r['status_id']); ?>
-        <tr>
-          <td>#<?= (int)$r['request_id'] ?></td>
-          <td><?= h($r['company_name']) ?></td>
-          <td><?= h($r['position_title']) ?></td>
-          <td><?= h($r['start_date']) ?> → <?= h($r['end_date']) ?></td>
-          <td><span class="badge <?= h($class) ?>"><?= h($label) ?></span></td>
-          <td><a href="request_status.php?id=<?= (int)$r['request_id'] ?>">ดูรายละเอียด</a></td>
-        </tr>
-      <?php endforeach; ?>
-      </tbody>
-    </table>
-  <?php endif; ?>
-  </div>
-
-  
 </body>
 
-</html>
