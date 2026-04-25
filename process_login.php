@@ -96,10 +96,19 @@ switch ($role) {
 
 if (!$user_row) {
     $_SESSION['login_error'] = 'Username หรือ Password ไม่ถูกต้อง';
-    header('Location: login.php');
+    
+    // เช็ค role ว่าเป็นใคร แล้วให้เด้งกลับไปหน้าของคนนั้น
+    if ($role === 'student') {
+        header('Location: login_student.php');
+    } elseif ($role === 'staff') {
+        header('Location: login_staff.php');
+    } elseif ($role === 'teacher') {
+        header('Location: login_teacher.php');
+    } else { // <--- เติม } ปิดตรงนี้ให้เรียบร้อยครับ!
+        header('Location: portal.php'); 
+    }
     exit;
 }
-
 session_regenerate_id(true);
 $_SESSION['user'] = $user_row;
 $_SESSION['role'] = $role;

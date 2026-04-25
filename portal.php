@@ -100,7 +100,7 @@ $page_title = 'Portal';
 
             <div class="row g-4 justify-content-center mb-5">
                 <div class="col-lg-3 col-md-6">
-                    <a href="loing_student.php" class="portal-card bg-p1">
+                    <a href="login_student.php" class="portal-card bg-p1">
                         <div class="portal-icon">
                             <i class="fas fa-user-graduate"> </i>
                         </div>
@@ -113,7 +113,7 @@ $page_title = 'Portal';
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <a href="login.php" class="portal-card bg-p2">
+                    <a href="login_staff.php" class="portal-card bg-p2">
                         <div class="portal-icon">
                             <i class="fas fa-file-signature"></i>
                         </div>
@@ -126,7 +126,7 @@ $page_title = 'Portal';
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <a href="login.php" class="portal-card bg-p3">
+                    <a href="login_teacher.php" class="portal-card bg-p3">
                         <div class="portal-icon">
                             <i class="fas fa-chalkboard-teacher"> </i>
                         </div>
