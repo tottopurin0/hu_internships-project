@@ -100,7 +100,6 @@ $page_title = 'Portal';
 
             <div class="row g-4 justify-content-center mb-5">
                 <div class="col-lg-3 col-md-6">
-                    <a href="login.php" class="portal-card bg-p1">
                         <div class="portal-icon">
                             <i class="fas fa-user-graduate"> </i>
                         </div>
