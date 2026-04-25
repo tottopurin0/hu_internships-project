@@ -21,7 +21,7 @@ $current = basename($_SERVER['PHP_SELF']);
 
 <header class="custom-navbar">
   <a class="navbar-brand" href="/index.php">
-    <img src="/assets/img/swu_Logo.png" alt="SWU" class="brand-logo">
+    <img src="../img/swu_Logo.png" alt="SWU" class="brand-logo">
     <div class="brand-divider"></div>
     <div class="logo-text">
       <h1>มหาวิทยาลัยศรีนครินทรวิโรฒ</h1>

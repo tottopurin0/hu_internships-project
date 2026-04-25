@@ -89,8 +89,7 @@ require '../includes/header.php';
   <?php endif; ?>
   </div>
 
-  <?php require __DIR__ . '/../includes/footer.php'; ?>
-
+  
 </body>
 
 </html>

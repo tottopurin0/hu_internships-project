@@ -66,7 +66,7 @@ require '../includes/header.php';
     </head>
 <body>
 
-<h1><i class="fas fa-file-signature me-2" style="color:var(--swu-red)"></i>ยื่นคำขอฝึกงาน</h1>
+<h1><i class="fas fa-file-signature" style="color:var(--swu-red); margin-right: 10px;"></i>ยื่นคำขอฝึกงาน</h1>
 
 <?php if ($success): ?>
   <div class="alert alert-success">
@@ -131,7 +131,6 @@ require '../includes/header.php';
 </form>
 </div>
 
-<?php require '../includes/footer.php'; ?>
 
 </body>
 

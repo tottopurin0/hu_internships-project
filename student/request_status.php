@@ -99,7 +99,7 @@ require '../includes/header.php';
     </head>
 <body>
 
-<h1><i class="fas fa-tasks me-2" style="color:var(--swu-red)"></i>สถานะคำขอฝึกงาน</h1>
+<h1><i class="fas fa-tasks" style="color:var(--swu-red); margin-right: 10px;"></i>สถานะคำขอฝึกงาน</h1>
 
 <?php if ($detail):
     [$lbl, $cls] = status_label($detail['status_id']); ?>
@@ -188,7 +188,6 @@ require '../includes/header.php';
   </div>
 <?php endif; ?>
 
-<?php require '../includes/footer.php'; ?>
 </body>
 
 </html>
