@@ -136,6 +136,33 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <!-- ======================= ส่วน ปรัชญา (เพิ่มใหม่) ======================= -->
+<!-- ใส่สีพื้นหลังให้ดูมีมิติอ่อนๆ เลียนแบบภาพตัวอย่าง -->
+<div class="py-5" style="background: linear-gradient(90deg, #fffbfb 0%, #ffdede 100%);">
+    <!-- ======================= ส่วน ประโยคเด่นตรงกลาง ======================= -->
+    <div class="container py-6">
+        <div class="row justify-content-center text-center">
+            
+            <div class="col-12 col-md-10 mt-3 mb-3">
+                
+                <!-- ตัวอักษรเด่นๆ เพียวๆ -->
+                <h2 class="fw-bold mb-0" style="color: #112a46; line-height: 1.6; font-size: 40px;">
+                    " สารสนเทศนำไปสู่การจัดการสารสนเทศเพื่อสังคมในยุคดิจิทัล "
+                </h2>
+                <h3 class="fw-bold mb-0" style="color: #677381; line-height: 1.6;">
+                    Information leads to Information management for Society in the Digital
+                </h3>
+
+                <!-- แถม: เส้นขีดสีแดงเล็กๆ ใต้ข้อความ ช่วยให้ดูไม่โล่งและดูมีสไตล์ (ถ้าไม่ชอบ ลบบรรทัดล่างนี้ทิ้งได้เลยครับ) -->
+                <div class="mx-auto mt-4" style="width: 300px; height: 4px; background-color: #c4122d; border-radius: 2px;"></div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!-- ======================= จบส่วน ปรัชญา ======================= -->
 
     <!-- ================= ส่วน ข่าวสารกิจกรรม ================= -->
     <div class="container py-5 mt-4" id="showcase">

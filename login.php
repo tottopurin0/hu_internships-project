@@ -34,7 +34,7 @@ $sample_staff = $conn->query('SELECT username FROM faculty_staff LIMIT 3')->fetc
 <body class="login-body">
   <div class="login-card">
     <div class="login-brand">
-      <img src="/assets/img/swu_Logo.png" alt="SWU Logo">
+      <img src="./img/swu_Logo.png" alt="SWU Logo">
       <h1>มหาวิทยาลัยศรีนครินทรวิโรฒ</h1>
       <p class="en">SRINAKHARINWIROT UNIVERSITY</p>
       <p class="sub">ระบบจัดการการฝึกงานสำหรับนิสิต</p>
