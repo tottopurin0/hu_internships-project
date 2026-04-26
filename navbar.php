@@ -23,6 +23,7 @@
                 <li class="nav-item"><a class="nav-link" href="index.php">หน้าแรก</a></li>
                 <li class="nav-item"><a class="nav-link" href="activities.php">ข่าวสารกิจกรรม</a></li>
                 <li class="nav-item"><a class="nav-link" href="teachers.php">อาจารย์ผู้สอน</a></li>
+                <li class="nav-item"><a class="nav-link" href="student.php">รายชื่อนิสิต</a></li>
                 <li class="nav-item"><a class="nav-link" href="flowchart.php">ขั้นตอนการฝึกงาน</a></li>
 
                 <li class="nav-item dropdown">

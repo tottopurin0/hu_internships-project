@@ -131,7 +131,7 @@ if ($action === 'list') {
     ?>
 
 <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-  <h1><i class="fas fa-chalkboard-user me-2"></i><?= $action === 'add' ? 'เพิ่มอาจารย์ใหม่' : 'แก้ไขอาจารย์' ?></h1>
+  <h1><i class="fas fa-chalkboard-user me-2" style="margin-right: 10px;"></i><?= $action === 'add' ? 'เพิ่มอาจารย์ใหม่' : 'แก้ไขอาจารย์' ?></h1>
 </div>
 
 <?php if ($errors): ?>
@@ -143,80 +143,62 @@ if ($action === 'list') {
   </div>
 <?php endif; ?>
 
-<div class="card card-form" style="max-width: 700px;">
-  <form method="POST">
-    <!-- Username Section -->
-    <div style="border-bottom: 1px solid #e0e0e0; padding-bottom: 20px; margin-bottom: 20px;">
-      <h5 style="color: #333; margin-bottom: 16px; font-weight: 600;"><i class="fas fa-user-secret me-2" style="color: #c4122d;"></i>ชื่อผู้ใช้</h5>
-      <div class="form-group">
-        <label style="font-weight: 500;">ชื่อผู้ใช้ <span class="req" style="color: #c4122d; font-weight: bold;">*</span></label>
-        <input type="text" name="username" required value="<?= $teacher ? h($teacher['username']) : '' ?>" placeholder="เช่น teacher_001" style="border-radius: 6px;">
-        <small style="color: #666; margin-top: 6px; display: block;">ใช้ในการเข้าสู่ระบบ</small>
-      </div>
+<div class="card card-form">
+  <div class="card-header">
+    <h2>
+      <i class="fas fa-<?= $action === 'edit' ? 'pen' : 'user-plus' ?>-circle me-2" style="margin-right: 10px;"></i>
+      <?= $action === 'add' ? 'เพิ่มอาจารย์ใหม่' : 'แก้ไขอาจารย์' ?>
+    </h2>
+  </div>
+
+  <form method="POST" class="form" style="padding:24px">
+    
+    <label>ชื่อผู้ใช้ *
+      <input type="text" name="username" required value="<?= $teacher ? h($teacher['username']) : '' ?>" <?= $action === 'edit' ? 'readonly' : '' ?> placeholder="เช่น teacher_001">
+      <small style="color: #666; display: block; margin-top: 4px;">ใช้ในการเข้าสู่ระบบ</small>
+    </label>
+
+    <div class="row">
+      <label>ชื่อ *
+        <input type="text" name="first_name" required value="<?= $teacher ? h($teacher['first_name']) : '' ?>">
+      </label>
+      <label>นามสกุล *
+        <input type="text" name="last_name" required value="<?= $teacher ? h($teacher['last_name']) : '' ?>">
+      </label>
     </div>
 
-    <!-- Personal Information Section -->
-    <div style="border-bottom: 1px solid #e0e0e0; padding-bottom: 20px; margin-bottom: 20px;">
-      <h5 style="color: #333; margin-bottom: 16px; font-weight: 600;"><i class="fas fa-user me-2" style="color: #c4122d;"></i>ข้อมูลส่วนตัว</h5>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-        <div class="form-group">
-          <label style="font-weight: 500;">ชื่อ <span class="req" style="color: #c4122d; font-weight: bold;">*</span></label>
-          <input type="text" name="first_name" required value="<?= $teacher ? h($teacher['first_name']) : '' ?>" style="border-radius: 6px;">
-        </div>
-        <div class="form-group">
-          <label style="font-weight: 500;">นามสกุล <span class="req" style="color: #c4122d; font-weight: bold;">*</span></label>
-          <input type="text" name="last_name" required value="<?= $teacher ? h($teacher['last_name']) : '' ?>" style="border-radius: 6px;">
-        </div>
-      </div>
+    <div class="row">
+      <label>อีเมล *
+        <input type="email" name="email" required value="<?= $teacher ? h($teacher['email']) : '' ?>">
+      </label>
+      <label>เบอร์โทร
+        <input type="text" name="phone" value="<?= $teacher ? h($teacher['phone']) : '' ?>" placeholder="เช่น 089-xxx-xxxx">
+      </label>
     </div>
 
-    <!-- Contact Information Section -->
-    <div style="border-bottom: 1px solid #e0e0e0; padding-bottom: 20px; margin-bottom: 20px;">
-      <h5 style="color: #333; margin-bottom: 16px; font-weight: 600;"><i class="fas fa-envelope me-2" style="color: #c4122d;"></i>ข้อมูลติดต่อ</h5>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-        <div class="form-group">
-          <label style="font-weight: 500;">อีเมล <span class="req" style="color: #c4122d; font-weight: bold;">*</span></label>
-          <input type="email" name="email" required value="<?= $teacher ? h($teacher['email']) : '' ?>" style="border-radius: 6px;">
-        </div>
-        <div class="form-group">
-          <label style="font-weight: 500;">เบอร์โทร</label>
-          <input type="text" name="phone" value="<?= $teacher ? h($teacher['phone']) : '' ?>" placeholder="เช่น 089-xxx-xxxx" style="border-radius: 6px;">
-        </div>
-      </div>
+    <label>สาขา/แผนก
+      <input type="text" name="department" value="<?= $teacher ? h($teacher['department']) : '' ?>" placeholder="เช่น วิทยาการคอมพิวเตอร์">
+    </label>
+
+    <?php if ($action === 'add'): ?>
+      <label>รหัสผ่าน *
+        <input type="password" name="password" required minlength="6" placeholder="อย่างน้อย 6 ตัวอักษร">
+        <small style="color: #666; display: block; margin-top: 4px;">ใช้อักษรตัวใหญ่ ตัวเล็ก และตัวเลขเพื่อความปลอดภัยสูงสุด</small>
+      </label>
+    <?php else: ?>
+      <label>รหัสผ่านใหม่
+        <input type="password" name="password" minlength="6" placeholder="เว้นว่างเพื่อเก็บรหัสเดิม">
+        <small style="color: #666; display: block; margin-top: 4px;">ปล่อยว่างเพื่อไม่เปลี่ยนแปลง</small>
+      </label>
+    <?php endif; ?>
+
+    <div class="actions">
+      <a href="?" class="btn">ยกเลิก</a>
+      <button class="btn btn-primary" type="submit">
+        <i class="fas fa-save me-2"></i> <?= $action === 'add' ? 'เพิ่มอาจารย์' : 'บันทึกการเปลี่ยนแปลง' ?>
+      </button>
     </div>
 
-    <!-- Department Section -->
-    <div style="border-bottom: 1px solid #e0e0e0; padding-bottom: 20px; margin-bottom: 20px;">
-      <h5 style="color: #333; margin-bottom: 16px; font-weight: 600;"><i class="fas fa-briefcase me-2" style="color: #c4122d;"></i>สาขา/แผนก</h5>
-      <div class="form-group">
-        <label style="font-weight: 500;">สาขา/แผนก</label>
-        <input type="text" name="department" value="<?= $teacher ? h($teacher['department']) : '' ?>" placeholder="เช่น วิทยาการคอมพิวเตอร์" style="border-radius: 6px;">
-      </div>
-    </div>
-
-    <!-- Security Section -->
-    <div style="padding-bottom: 20px; margin-bottom: 20px;">
-      <h5 style="color: #333; margin-bottom: 16px; font-weight: 600;"><i class="fas fa-lock me-2" style="color: #c4122d;"></i>ความปลอดภัย</h5>
-      <?php if ($action === 'add'): ?>
-        <div class="form-group">
-          <label style="font-weight: 500;">รหัสผ่าน <span class="req" style="color: #c4122d; font-weight: bold;">*</span></label>
-          <input type="password" name="password" required minlength="6" placeholder="อย่างน้อย 6 ตัวอักษร" style="border-radius: 6px;">
-          <small style="color: #666; margin-top: 6px; display: block;">ใช้อักษรตัวใหญ่ ตัวเล็ก และตัวเลขเพื่อความปลอดภัยสูงสุด</small>
-        </div>
-      <?php else: ?>
-        <div class="form-group">
-          <label style="font-weight: 500;">รหัสผ่านใหม่</label>
-          <input type="password" name="password" minlength="6" placeholder="เว้นว่างเพื่อเก็บรหัสเดิม" style="border-radius: 6px;">
-          <small style="color: #666; margin-top: 6px; display: block;">ปล่อยว่างเพื่อไม่เปลี่ยนแปลง</small>
-        </div>
-      <?php endif; ?>
-    </div>
-
-    <!-- Action Buttons -->
-    <div style="display: flex; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
-      <button type="submit" class="btn btn-primary" style="flex: 1;"><i class="fas fa-save me-2"></i><?= $action === 'add' ? 'เพิ่มอาจารย์' : 'บันทึกการเปลี่ยนแปลง' ?></button>
-      <a href="?" class="btn btn-secondary" style="flex: 1; text-align: center;"><i class="fas fa-times me-2"></i>ยกเลิก</a>
-    </div>
   </form>
 </div>
 

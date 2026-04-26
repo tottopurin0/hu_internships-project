@@ -235,7 +235,7 @@ if ($res) {
                         <span class="input-group-text"><i class="fas fa-layer-group"></i></span>
                         <select name="year_level" class="form-control" style="appearance: auto;">
                             <option value="" disabled <?= $old['year_level'] == '' ? 'selected' : '' ?>>เลือกชั้นปี</option>
-                            <?php for($i=1; $i<=6; $i++): ?>
+                            <?php for($i=1; $i<=4; $i++): ?>
                                 <option value="<?= $i ?>" <?= $old['year_level']==(string)$i ? 'selected' : '' ?>>ชั้นปีที่ <?= $i ?></option>
                             <?php endfor; ?>
                         </select>

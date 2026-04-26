@@ -99,7 +99,7 @@ require '../includes/header.php';
 <?php if ($preview): [$lbl, $cls] = status_label($preview['status_id']); ?>
   <div class="card card-form">
     <div class="card-header">
-      <h2><i class="fas fa-file-invoice me-2"></i>ใบส่งตัว (Preview) #<?= (int)$preview['request_id'] ?></h2>
+      <h2><i class="fas fa-file-invoice me-2" style="margin-right: 10px;"></i>ใบส่งตัว (Preview) #<?= (int)$preview['request_id'] ?></h2>
       <span class="badge <?= h($cls) ?>"><?= h($lbl) ?></span>
     </div>
     <div class="letter">

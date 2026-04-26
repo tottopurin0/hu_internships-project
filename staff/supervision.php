@@ -120,7 +120,7 @@ require '../includes/header.php';
 <?php if ($view_request): ?>
 <div class="card card-table">
   <div class="card-header">
-    <h2><i class="fas fa-history me-2"></i>บันทึกการนิเทศสำหรับเคส #<?= (int)$view_request ?></h2>
+    <h2><i class="fas fa-history me-2" style="margin-right: 10px;"></i>บันทึกการนิเทศสำหรับเคส #<?= (int)$view_request ?></h2>
     <a href="supervision.php" class="btn btn-secondary"><i class="fas fa-times me-1"></i>ปิด</a>
   </div>
   <?php if (!$view_records): ?>

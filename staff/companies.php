@@ -125,7 +125,7 @@ require '../includes/header.php';
 </div>
 
 <div class="card card-table">
-  <div class="card-header"><h2><i class="fas fa-list-ul me-2"></i>รายการบริษัท (<?= count($rows) ?>)</h2></div>
+  <div class="card-header"><h2><i class="fas fa-list-ul me-2" style="margin-right: 10px;"></i>รายการบริษัท (<?= count($rows) ?>)</h2></div>
   <?php if (!$rows): ?>
     <p class="muted">ยังไม่มีบริษัท</p>
   <?php else: ?>
