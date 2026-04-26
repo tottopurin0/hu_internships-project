@@ -84,7 +84,7 @@ require '../includes/header.php';
 
     <div class="card card-form">
         <div class="card-header">
-            <h2><i class="fas fa-edit me-2"></i>แบบฟอร์มคำขอ</h2>
+            <h2><i class="fas fa-edit me-2" style="margin-right: 10px;"></i>แบบฟอร์มคำขอ</h2>
         </div>
         <form method="POST" class="form" style="padding:24px">
             <label>

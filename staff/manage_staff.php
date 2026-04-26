@@ -75,8 +75,8 @@ if ($action === 'list') {
     ?>
 
 <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-  <h1><i class="fas fa-id-badge me-2"></i>จัดการเจ้าหน้าที่</h1>
-  <a href="?action=add" class="btn btn-primary"><i class="fas fa-user-plus me-1"></i>เพิ่มเจ้าหน้าที่ใหม่</a>
+  <h1><i class="fas fa-id-badge me-2" style="margin-right: 10px;"></i>จัดการเจ้าหน้าที่</h1>
+  <a href="?action=add" class="btn btn-primary"><i class="fas fa-user-plus me-1" style="margin-right: 10px;"></i>เพิ่มเจ้าหน้าที่ใหม่</a>
 </div>
 
 <?php if ($msg): ?>
@@ -99,8 +99,8 @@ if ($action === 'list') {
             <td><?= h($s['position']) ?></td>
             <td><?= h($s['phone']) ?></td>
             <td style="text-align: right; gap: 8px;">
-              <a href="?action=edit&id=<?= (int)$s['faculty_staff_id'] ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit me-1"></i>แก้ไข</a>
-              <a href="?action=delete&id=<?= (int)$s['faculty_staff_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('ต้องการลบ?')"><i class="fas fa-trash me-1"></i>ลบ</a>
+              <a href="?action=edit&id=<?= (int)$s['faculty_staff_id'] ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit me-1" style="margin-right: 10px;"></i>แก้ไข</a>
+              <a href="?action=delete&id=<?= (int)$s['faculty_staff_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('ต้องการลบ?')"><i class="fas fa-trash me-1" style="margin-right: 10px;"></i>ลบ</a>
             </td>
           </tr>
         <?php endforeach; ?>
@@ -205,6 +205,3 @@ if ($action === 'list') {
 </div>
 
 <?php }
-
-require '../includes/footer.php';
-?>

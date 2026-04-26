@@ -95,8 +95,8 @@ if ($action === 'list') {
     ?>
 
 <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-  <h1><i class="fas fa-users me-2"></i>จัดการนิสิต</h1>
-  <a href="?action=add" class="btn btn-primary"><i class="fas fa-user-plus me-1"></i>เพิ่มนิสิตใหม่</a>
+  <h1><i class="fas fa-users me-2" style="margin-right: 10px;"></i>จัดการนิสิต</h1>
+  <a href="?action=add" class="btn btn-primary"><i class="fas fa-user-plus me-1"style="margin-right: 10px;"></i>เพิ่มนิสิตใหม่</a>
 </div>
 
 <?php if ($msg): ?>
@@ -106,6 +106,7 @@ if ($action === 'list') {
 <?php if (!$students): ?>
   <p class="muted">ยังไม่มีนิสิต</p>
 <?php else: ?>
+  
   <div class="card card-table">
     <table class="tbl">
       <thead>
@@ -119,8 +120,8 @@ if ($action === 'list') {
             <td><?= h($s['email']) ?></td>
             <td><?= $s['advisor_fname'] ? h($s['advisor_fname'].' '.$s['advisor_lname']) : '—' ?></td>
             <td style="text-align: right; gap: 8px;">
-              <a href="?action=edit&id=<?= (int)$s['student_id'] ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit me-1"></i>แก้ไข</a>
-              <a href="?action=delete&id=<?= (int)$s['student_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('ต้องการลบ?')"><i class="fas fa-trash me-1"></i>ลบ</a>
+              <a href="?action=edit&id=<?= (int)$s['student_id'] ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit me-1" style="margin-right: 10px;"></i>แก้ไข</a>
+              <a href="?action=delete&id=<?= (int)$s['student_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('ต้องการลบ?')"><i class="fas fa-trash me-1" style="margin-right: 10px;"></i>ลบ</a>
             </td>
           </tr>
         <?php endforeach; ?>
@@ -155,6 +156,7 @@ if ($action === 'list') {
       <?php foreach ($errors as $e): ?><li><?= h($e) ?></li><?php endforeach; ?>
     </ul>
   </div>
+
 <?php endif; ?>
 
 <div class="card card-form" style="max-width: 700px;">
@@ -259,5 +261,4 @@ if ($action === 'list') {
 
 <?php }
 
-require '../includes/footer.php';
-?>
+

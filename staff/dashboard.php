@@ -43,7 +43,7 @@ $page_title = 'หน้าหลัก';
 require '../includes/header.php';
 ?>
 
-<h1><i class="fas fa-hand-sparkles me-2" style="color:var(--swu-red)"></i> สวัสดี <?= h($user['display_name']) ?></h1>
+<h1><i class="fa-solid fa-address-card me-2" style="color:var(--swu-red)"></i> สวัสดี <?= h($user['display_name']) ?></h1>
 <p class="muted">
   บทบาท: <?= $role === 'teacher' ? 'อาจารย์' : 'เจ้าหน้าที่' ?>
   <?php if ($role === 'teacher' && !empty($user['department'])): ?>
@@ -63,7 +63,7 @@ require '../includes/header.php';
 
 <div class="card card-table">
   <div class="card-header">
-    <h2><i class="fas fa-clock me-2"></i>คำขอล่าสุด</h2>
+    <h2><i class="fas fa-clock me-2" style="margin-right: 10px;"></i>คำขอล่าสุด</h2>
     <div style="display: flex; gap: 10px;">
       <?php if ($role === 'teacher'): ?>
         <a class="btn btn-primary" href="approve_requests.php"><i class="fas fa-check-circle me-1"></i> ไปอนุมัติคำขอ</a>

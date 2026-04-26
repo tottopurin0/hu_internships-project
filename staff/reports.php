@@ -39,10 +39,10 @@ $page_title = 'รายงานภาพรวม';
 require '../includes/header.php';
 ?>
 
-<h1><i class="fas fa-chart-bar me-2" style="color:var(--swu-red)"></i>รายงานภาพรวมระบบ</h1>
+<h1><i class="fas fa-chart-bar me-2" style="color:var(--swu-red); margin-right: 10px;"></i>รายงานภาพรวมระบบ</h1>
 
 <div class="card card-table">
-  <div class="card-header"><h2><i class="fas fa-tasks me-2"></i>สรุปตามสถานะ</h2></div>
+  <div class="card-header"><h2><i class="fas fa-tasks me-2" style="margin-right: 10px;"></i>สรุปตามสถานะ</h2></div>
   <table class="tbl">
     <thead><tr><th>สถานะ</th><th>จำนวน</th></tr></thead>
     <tbody>
@@ -55,7 +55,7 @@ require '../includes/header.php';
 
 <div class="grid-2">
   <div class="card card-table">
-    <div class="card-header"><h2><i class="fas fa-trophy me-2"></i>Top 10 บริษัท (จำนวนนิสิต)</h2></div>
+    <div class="card-header"><h2><i class="fas fa-trophy me-2" style="margin-right: 10px;"></i>Top 10 บริษัท (จำนวนนิสิต)</h2></div>
     <?php if (!$by_company): ?>
       <p class="muted">ไม่มีข้อมูล</p>
     <?php else: ?>
@@ -71,7 +71,7 @@ require '../includes/header.php';
   </div>
 
   <div class="card card-table">
-    <div class="card-header"><h2><i class="fas fa-chalkboard-teacher me-2"></i>จำนวนเคสต่ออาจารย์ที่ปรึกษา</h2></div>
+    <div class="card-header"><h2><i class="fas fa-chalkboard-teacher me-2" style="margin-right: 10px;"></i>จำนวนเคสต่ออาจารย์ที่ปรึกษา</h2></div>
     <?php if (!$by_advisor): ?>
       <p class="muted">ไม่มีข้อมูล</p>
     <?php else: ?>
@@ -91,7 +91,7 @@ require '../includes/header.php';
 </div>
 
 <div class="card card-table">
-  <div class="card-header"><h2><i class="fas fa-history me-2"></i>คำขอล่าสุด (20 รายการ)</h2></div>
+  <div class="card-header"><h2><i class="fas fa-history me-2" style="margin-right: 10px;"></i>คำขอล่าสุด (20 รายการ)</h2></div>
   <table class="tbl">
     <thead><tr><th>#</th><th>นิสิต</th><th>บริษัท</th><th>ยื่นเมื่อ</th><th>สถานะ</th></tr></thead>
     <tbody>
@@ -108,4 +108,3 @@ require '../includes/header.php';
   </table>
 </div>
 
-<?php require '../includes/footer.php'; ?>

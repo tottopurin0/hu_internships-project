@@ -67,13 +67,13 @@ $page_title = 'ออกใบส่งตัว';
 require '../includes/header.php';
 ?>
 
-<h1><i class="fas fa-envelope-open-text me-2" style="color:var(--swu-red)"></i>ออกใบส่งตัวฝึกงาน</h1>
+<h1><i class="fas fa-envelope-open-text me-2" style="color:var(--swu-red); margin-right: 10px;"></i>ออกใบส่งตัวฝึกงาน</h1>
 
 <?php if ($msg): ?><div class="alert alert-success"><i class="fas fa-check me-2"></i><?= h($msg) ?></div><?php endif; ?>
 <?php if ($err): ?><div class="alert alert-error"><i class="fas fa-exclamation-circle me-2"></i><?= h($err) ?></div><?php endif; ?>
 
 <div class="card card-table">
-  <div class="card-header"><h2><i class="fas fa-inbox me-2"></i>คำขอที่พร้อมออกใบส่งตัว</h2></div>
+  <div class="card-header"><h2><i class="fas fa-inbox me-2" style="margin-right: 10px;"></i>คำขอที่พร้อมออกใบส่งตัว</h2></div>
   <?php if (!$ready): ?>
     <p class="muted">ไม่มีคำขอที่รออกใบส่งตัว</p>
   <?php else: ?>
@@ -136,5 +136,3 @@ require '../includes/header.php';
     <?php endif; ?>
   </div>
 <?php endif; ?>
-
-<?php require '../includes/footer.php'; ?>

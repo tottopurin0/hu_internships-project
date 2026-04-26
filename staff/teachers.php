@@ -77,10 +77,10 @@ if ($action === 'list') {
     ?>
 
 <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-  <h1><i class="fas fa-chalkboard-user me-2"></i>จัดการอาจารย์</h1>
+  <h1><i class="fas fa-chalkboard-user me-2" style="margin-right: 10px;"></i>จัดการอาจารย์</h1>
   <div style="display: flex; gap: 10px;">
-    <a href="?action=add" class="btn btn-primary"><i class="fas fa-user-plus me-1"></i>เพิ่มอาจารย์ใหม่</a>
-    <a href="supervision.php" class="btn btn-secondary"><i class="fas fa-clipboard-check me-1"></i>ดูรายการบันทึกนิเทศ</a>
+    <a href="?action=add" class="btn btn-primary"><i class="fas fa-user-plus me-1" style="margin-right: 10px;"></i>เพิ่มอาจารย์ใหม่</a>
+    <a href="supervision.php" class="btn btn-secondary"><i class="fas fa-clipboard-check me-1" style="margin-right: 10px;"></i>ดูรายการบันทึกนิเทศ</a>
   </div>
 </div>
 
@@ -105,8 +105,8 @@ if ($action === 'list') {
             <td><?= h($t['department']) ?></td>
             <td><?= h($t['phone']) ?></td>
             <td style="text-align: right; gap: 8px;">
-              <a href="?action=edit&id=<?= (int)$t['teacher_id'] ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit me-1"></i>แก้ไข</a>
-              <a href="?action=delete&id=<?= (int)$t['teacher_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('ต้องการลบ?')"><i class="fas fa-trash me-1"></i>ลบ</a>
+              <a href="?action=edit&id=<?= (int)$t['teacher_id'] ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit me-1" style="margin-right: 10px;"></i>แก้ไข</a>
+              <a href="?action=delete&id=<?= (int)$t['teacher_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('ต้องการลบ?')"><i class="fas fa-trash me-1" style="margin-right: 10px;"></i>ลบ</a>
             </td>
           </tr>
         <?php endforeach; ?>
@@ -221,6 +221,3 @@ if ($action === 'list') {
 </div>
 
 <?php }
-
-require '../includes/footer.php';
-?>

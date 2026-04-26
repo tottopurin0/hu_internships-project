@@ -45,7 +45,7 @@ require '../includes/header.php';
 
 <body>
 
-    <h1><i class="fas fa-hand-sparkles me-2" style="color:var(--swu-red)"></i> สวัสดี <?= h($user['display_name']) ?>
+    <h1><i class="fa-solid fa-address-card me-2" style="color:var(--swu-red)"></i> สวัสดี <?= h($user['display_name']) ?>
     </h1>
     <p class="muted"><i class="fas fa-id-card me-1"></i> รหัสนิสิต: <?= h($student_code) ?> · <?= h($user['major']) ?>
     </p>
@@ -71,7 +71,7 @@ require '../includes/header.php';
 
     <div class="card card-table">
         <div class="card-header">
-            <h2><i class="fas fa-list me-2"></i>คำขอฝึกงานล่าสุด</h2>
+            <h2><i class="fas fa-list me-4" style="margin-right: 10px;"></i>คำขอฝึกงานล่าสุด</h2>
             <div style="display: flex; gap: 10px;">
                 <a class="btn btn-primary" href="request_new.php"><i class="fas fa-plus me-1"></i> ยื่นคำขอใหม่</a>
                 <a class="btn btn-secondary" href="../staff/supervision.php"><i class="fas fa-clipboard-check me-1"></i>

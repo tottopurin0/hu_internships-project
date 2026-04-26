@@ -82,13 +82,13 @@ $page_title = 'อนุมัติคำขอ';
 require '../includes/header.php';
 ?>
 
-<h1><i class="fas fa-check-circle me-2" style="color:var(--swu-red)"></i>อนุมัติคำขอฝึกงาน</h1>
+<h1><i class="fas fa-check-circle me-2" style="color:var(--swu-red); margin-right: 10px;"></i>อนุมัติคำขอฝึกงาน</h1>
 
 <?php if ($msg): ?><div class="alert alert-success"><i class="fas fa-check me-2"></i><?= h($msg) ?></div><?php endif; ?>
 <?php if ($err): ?><div class="alert alert-error"><i class="fas fa-exclamation-circle me-2"></i><?= h($err) ?></div><?php endif; ?>
 
 <div class="card card-table">
-  <div class="card-header"><h2><i class="fas fa-hourglass-half me-2"></i>คำขอที่รอพิจารณา (<?= count($pending) ?>)</h2></div>
+  <div class="card-header"><h2><i class="fas fa-hourglass-half me-2" style="margin-right: 10px;"></i>คำขอที่รอพิจารณา (<?= count($pending) ?>)</h2></div>
   <?php if (!$pending): ?>
     <p class="muted">ไม่มีคำขอที่รอพิจารณา ✅</p>
   <?php else: ?>
@@ -113,36 +113,37 @@ require '../includes/header.php';
 <?php if ($selected): [$lbl, $cls] = status_label($selected['status_id']); ?>
   <div class="card card-form">
     <div class="card-header">
-      <h2><i class="fas fa-file-alt me-2"></i>รายละเอียดคำขอ #<?= (int)$selected['request_id'] ?></h2>
+      <h2><i class="fas fa-file-alt me-2" style="margin-right: 10px;"></i>รายละเอียดคำขอ #<?= (int)$selected['request_id'] ?></h2>
       <span class="badge <?= h($cls) ?>"><?= h($lbl) ?></span>
     </div>
-    <dl class="kv">
-      <dt>นิสิต</dt>
-      <dd><?= h($selected['student_code'].' — '.$selected['first_name'].' '.$selected['last_name']) ?></dd>
-      <dt>คณะ/สาขา</dt><dd><?= h($selected['faculty'].' / '.$selected['major']) ?></dd>
-      <dt>GPA</dt><dd><?= h($selected['gpa']) ?></dd>
-      <dt>บริษัท</dt><dd><?= h($selected['company_name']) ?> (<?= h($selected['province']) ?>)</dd>
-      <dt>ผู้ติดต่อ</dt><dd><?= h($selected['contact_person']) ?> <?= h($selected['contact_phone']) ?></dd>
-      <dt>ตำแหน่ง</dt><dd><?= h($selected['position_title']) ?></dd>
-      <dt>ช่วงฝึกงาน</dt><dd><?= h($selected['start_date']) ?> ถึง <?= h($selected['end_date']) ?></dd>
-      <dt>รายละเอียด</dt><dd><?= nl2br(h($selected['description'] ?: '-')) ?></dd>
-    </dl>
+    <div class="card-body" style="padding: 24px;">
+      <dl class="kv">
+        <dt>นิสิต</dt>
+        <dd><?= h($selected['student_code'].' — '.$selected['first_name'].' '.$selected['last_name']) ?></dd>
+        <dt>คณะ/สาขา</dt><dd><?= h($selected['faculty'].' / '.$selected['major']) ?></dd>
+        <dt>GPA</dt><dd><?= h($selected['gpa']) ?></dd>
+        <dt>บริษัท</dt><dd><?= h($selected['company_name']) ?> (<?= h($selected['province']) ?>)</dd>
+        <dt>ผู้ติดต่อ</dt><dd><?= h($selected['contact_person']) ?> <?= h($selected['contact_phone']) ?></dd>
+        <dt>ตำแหน่ง</dt><dd><?= h($selected['position_title']) ?></dd>
+        <dt>ช่วงฝึกงาน</dt><dd><?= h($selected['start_date']) ?> ถึง <?= h($selected['end_date']) ?></dd>
+        <dt>รายละเอียด</dt><dd><?= nl2br(h($selected['description'] ?: '-')) ?></dd>
+      </dl>
 
-    <?php if ((int)$selected['status_id'] === 1): ?>
-      <form method="POST" class="form">
-        <input type="hidden" name="request_id" value="<?= (int)$selected['request_id'] ?>">
-        <label>หมายเหตุ (ถึงนิสิต)
-          <textarea name="remark" rows="3" placeholder="ข้อคิดเห็น, เงื่อนไข, ฯลฯ"></textarea>
-        </label>
-        <div class="actions">
-          <button class="btn btn-danger"  name="action" value="reject"><i class="fas fa-times-circle me-1"></i> ไม่อนุมัติ</button>
-          <button class="btn btn-primary" name="action" value="approve"><i class="fas fa-check-circle me-1"></i> อนุมัติ</button>
-        </div>
-      </form>
-    <?php else: ?>
-      <p class="muted">คำขอนี้ได้รับการพิจารณาแล้ว — ไม่สามารถแก้ไขได้</p>
-    <?php endif; ?>
+      <?php if ((int)$selected['status_id'] === 1): ?>
+        <form method="POST" class="form">
+          <input type="hidden" name="request_id" value="<?= (int)$selected['request_id'] ?>">
+          <label>หมายเหตุ (ถึงนิสิต)
+            <textarea name="remark" rows="3" placeholder="ข้อคิดเห็น, เงื่อนไข, ฯลฯ"></textarea>
+          </label>
+          <div class="actions">
+            <button class="btn btn-danger"  name="action" value="reject"><i class="fas fa-times-circle me-1"></i> ไม่อนุมัติ</button>
+            <button class="btn btn-primary" name="action" value="approve"><i class="fas fa-check-circle me-1"></i> อนุมัติ</button>
+          </div>
+        </form>
+              <?php else: ?>
+                <p class="muted">คำขอนี้ได้รับการพิจารณาแล้ว — ไม่สามารถแก้ไขได้</p>
+              <?php endif; ?>
+      </div>
   </div>
 <?php endif; ?>
 
-<?php require '../includes/footer.php'; ?>

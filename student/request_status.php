@@ -338,7 +338,7 @@ require '../includes/header.php';
     <?php else: ?>
     <div class="card card-table">
         <div class="card-header">
-            <h3><i class="fas fa-list me-2"></i>คำขอของฉัน</h3>
+            <h3><i class="fas fa-list me-2" style="margin-right: 10px;"></i>คำขอของฉัน</h3>
         </div>
         <?php if (!$all): ?>
         <p class="muted">ยังไม่มีคำขอ — <a href="request_new.php">ยื่นคำขอใหม่</a></p>

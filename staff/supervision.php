@@ -89,13 +89,13 @@ $page_title = 'บันทึกการนิเทศ';
 require '../includes/header.php';
 ?>
 
-<h1><i class="fas fa-clipboard-check me-2" style="color:var(--swu-red)"></i>บันทึกการนิเทศงาน</h1>
+<h1><i class="fas fa-clipboard-check me-2" style="color:var(--swu-red); margin-right: 10px;"></i>บันทึกการนิเทศงาน</h1>
 
 <?php if ($msg): ?><div class="alert alert-success"><i class="fas fa-check me-2"></i><?= h($msg) ?></div><?php endif; ?>
 <?php if ($err): ?><div class="alert alert-error"><i class="fas fa-exclamation-circle me-2"></i><?= h($err) ?></div><?php endif; ?>
 
 <div class="card card-table">
-  <div class="card-header"><h2><i class="fas fa-user-graduate me-2"></i>เคสที่อยู่ภายใต้การดูแล</h2></div>
+  <div class="card-header"><h2><i class="fas fa-user-graduate me-2" style="margin-right: 10px;"></i>เคสที่อยู่ภายใต้การดูแล</h2></div>
   <?php if (!$cases): ?>
     <p class="muted">ยังไม่มีนิสิตที่ต้องนิเทศ</p>
   <?php else: ?>
@@ -109,7 +109,7 @@ require '../includes/header.php';
             <td><?= h($r['company_name']) ?></td>
             <td><?= h($r['start_date']) ?> → <?= h($r['end_date']) ?></td>
             <td><span class="badge <?= h($c) ?>"><?= h($l) ?></span></td>
-            <td><a href="?view=<?= (int)$r['request_id'] ?>" class="btn btn-sm btn-secondary"><i class="fas fa-eye me-1"></i>ดูบันทึกนิเทศ</a></td>
+            <td><a href="?view=<?= (int)$r['request_id'] ?>" class="btn btn-sm btn-secondary"><i class="fas fa-eye me-1" style="margin-right: 10px;"></i>ดูบันทึกนิเทศ</a></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
@@ -143,7 +143,7 @@ require '../includes/header.php';
 <?php endif; ?>
 
 <div class="card card-form">
-  <div class="card-header"><h2><i class="fas fa-plus-circle me-2"></i>เพิ่มบันทึกการนิเทศ</h2></div>
+  <div class="card-header"><h2><i class="fas fa-plus-circle me-2" style="margin-right: 10px;"></i>เพิ่มบันทึกการนิเทศ</h2></div>
   <form method="POST" class="form" style="padding:24px">
     <label>เลือกคำขอ *
       <select name="request_id" required>
@@ -188,5 +188,3 @@ require '../includes/header.php';
     </div>
   </form>
 </div>
-
-<?php require '../includes/footer.php'; ?>
