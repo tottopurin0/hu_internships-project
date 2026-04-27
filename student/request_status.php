@@ -263,7 +263,7 @@ require '../includes/header.php';
 
     <div class="card card-form">
         <div class="card-header">
-            <h2><i class="fas fa-file-alt me-2"></i>คำขอ #<?= (int)$detail['request_id'] ?></h2>
+            <h2><i class="fas fa-file-alt me-2" style="margin-right: 10px;"></i>คำขอ #<?= (int)$detail['request_id'] ?></h2>
             <span class="badge <?= h($cls) ?>"><?= h($lbl) ?></span>
         </div>
         <dl class="kv">
@@ -287,7 +287,7 @@ require '../includes/header.php';
 
     <div class="card card-accent">
         <div class="card-header">
-            <h3><i class="fas fa-stream me-2"></i>ประวัติการเปลี่ยนสถานะ</h3>
+            <h3><i class="fas fa-stream me-2" style="margin-right: 10px;"></i>ประวัติการเปลี่ยนสถานะ</h3>
         </div>
         <?php if (!$logs): ?><p class="muted">ยังไม่มีประวัติ</p>
         <?php else: ?>
@@ -306,7 +306,7 @@ require '../includes/header.php';
 
     <div class="card card-table">
         <div class="card-header">
-            <h3><i class="fas fa-clipboard-check me-2"></i>บันทึกการนิเทศ</h3>
+            <h3><i class="fas fa-clipboard-check me-2" style="margin-right: 10px;"></i>บันทึกการนิเทศ</h3>
         </div>
         <?php if (!$supervision): ?><p class="muted">ยังไม่มีการนิเทศ</p>
         <?php else: ?>

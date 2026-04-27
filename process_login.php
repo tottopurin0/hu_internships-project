@@ -94,11 +94,11 @@ if (!$user_row) {
     
     // เช็ค role ว่าเป็นใคร แล้วให้เด้งกลับไปหน้าของคนนั้น
     if ($role === 'student') {
-        header('Location: login_student.php');
+        header('Location: login/login_student.php');
     } elseif ($role === 'staff') {
-        header('Location: login_staff.php');
+        header('Location: login/login_staff.php');
     } elseif ($role === 'teacher') {
-        header('Location: login_teacher.php');
+        header('Location: login/login_teacher.php');
     } else { // <--- เติม } ปิดตรงนี้ให้เรียบร้อยครับ!
         header('Location: portal.php'); 
     }

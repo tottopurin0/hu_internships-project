@@ -94,39 +94,54 @@ if ($action === 'list') {
     $students = $conn->query('SELECT s.*, t.first_name AS advisor_fname, t.last_name AS advisor_lname FROM student s LEFT JOIN teacher t ON s.advisor_id = t.teacher_id ORDER BY s.student_code')->fetch_all(MYSQLI_ASSOC);
     ?>
 
-<div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-  <h1><i class="fas fa-users me-2" style="margin-right: 20px;"></i>จัดการนิสิต</h1>
+<div style="margin-bottom: 20px; display: flex; justify-content: sp-between; align-items: center;">
+    <h1>
+      <i class="fas fa-users me-2" style="margin-right: 20px;"></i>จัดการนิสิต
+    </h1>
 </div>
 
 <?php if ($msg): ?>
-  <div class="alert alert-success"><i class="fas fa-check-circle me-2"></i><?= h($msg) ?></div>
+<div class="alert alert-success">
+  <i class="fas fa-check-circle me-2"></i><?= h($msg) ?>
+</div>
 <?php endif; ?>
 
 <?php if (!$students): ?>
-  <p class="muted">ยังไม่มีนิสิต</p>
+<p class="muted">ยังไม่มีนิสิต</p>
 <?php else: ?>
-  
-  <div class="card card-table">
+
+<div class="card card-table">
     <table class="tbl">
-      <thead>
-        <tr><th>รหัสนิสิต</th><th>ชื่อ-นามสกุล</th><th>อีเมล</th><th>อาจารย์ที่ปรึกษา</th><th></th></tr>
-      </thead>
-      <tbody>
-        <?php foreach ($students as $s): ?>
-          <tr>
-            <td><strong><?= h($s['student_code']) ?></strong></td>
-            <td><?= h($s['first_name'].' '.$s['last_name']) ?></td>
-            <td><?= h($s['email']) ?></td>
-            <td><?= $s['advisor_fname'] ? h($s['advisor_fname'].' '.$s['advisor_lname']) : '—' ?></td>
-            <td style="text-align: right; gap: 8px;">
-              <a href="?action=edit&id=<?= (int)$s['student_id'] ?>" class="btn btn-sm btn-warning"><i class="fas fa-edit me-1" style="margin-right: 10px;"></i>แก้ไข</a>
-              <a href="?action=delete&id=<?= (int)$s['student_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('ต้องการลบ?')"><i class="fas fa-trash me-1" style="margin-right: 10px;"></i>ลบ</a>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
+        <thead>
+            <tr>
+                <th>รหัสนิสิต</th>
+                <th>ชื่อ-นามสกุล</th>
+                <th>อีเมล</th>
+                <th>อาจารย์ที่ปรึกษา</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($students as $s): ?>
+            <tr>
+                <td><strong><?= h($s['student_code']) ?></strong></td>
+                <td><?= h($s['first_name'].' '.$s['last_name']) ?></td>
+                <td><?= h($s['email']) ?></td>
+                <td><?= $s['advisor_fname'] ? h($s['advisor_fname'].' '.$s['advisor_lname']) : '—' ?></td>
+                <td style="text-align: right; gap: 8px;">
+                    <a href="?action=edit&id=<?= (int)$s['student_id'] ?>" class="btn btn-sm btn-warning">
+                      <i class="fas fa-edit me-1" style="margin-right: 10px;"></i>แก้ไข
+                    </a>
+                    <a href="?action=delete&id=<?= (int)$s['student_id'] ?>" class="btn btn-sm btn-danger"
+                        onclick="return confirm('ต้องการลบ?')">
+                        <i class="fas fa-trash me-1"style="margin-right: 10px;"></i>ลบ
+                      </a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
-  </div>
+</div>
 <?php endif;
 
 } elseif ($action === 'add' || $action === 'edit') {
@@ -145,99 +160,109 @@ if ($action === 'list') {
     ?>
 
 <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-  <h1><i class="fas fa-users me-2" style="margin-right: 10px;"></i><?= $action === 'add' ? 'เพิ่มนิสิตใหม่' : 'แก้ไขนิสิต' ?></h1>
+    <h1>
+      <i class="fas fa-users me-2"style="margin-right: 10px;"></i><?= $action === 'add' ? 'เพิ่มนิสิตใหม่' : 'แก้ไขนิสิต' ?>
+    </h1>
 </div>
 
 <?php if ($errors): ?>
-  <div class="alert alert-error" style="margin-bottom: 20px;">
+<div class="alert alert-error" style="margin-bottom: 20px;">
     <strong><i class="fas fa-exclamation-circle me-2"></i>พบข้อผิดพลาด:</strong>
     <ul style="margin-bottom: 0;">
-      <?php foreach ($errors as $e): ?><li><?= h($e) ?></li><?php endforeach; ?>
+        <?php foreach ($errors as $e): ?><li><?= h($e) ?></li><?php endforeach; ?>
     </ul>
-  </div>
+</div>
 
 <?php endif; ?>
 
 <div class="card card-form">
-  <div class="card-header">
-    <h2>
-      <i class="fas fa-<?= $action === 'edit' ? 'pen' : 'user-plus' ?>-circle me-2" style="margin-right: 10px;"></i>
-      <?= $action === 'add' ? 'เพิ่มนิสิตใหม่' : 'แก้ไขนิสิต' ?>
-    </h2>
-  </div>
-
-  <form method="POST" class="form" style="padding:24px">
-    
-    <label>รหัสนิสิต *
-      <input type="text" name="student_code" required value="<?= $student ? h($student['student_code']) : '' ?>" <?= $action === 'edit' ? 'readonly' : '' ?> placeholder="เช่น 6610501234">
-      <small style="color: #666; display: block; margin-top: 4px;">ต้องเป็นตัวเลข 5–20 หลัก <?= $action === 'edit' ? '(ไม่สามารถแก้ไขได้)' : '' ?></small>
-    </label>
-
-    <div class="row">
-      <label>ชื่อ *
-        <input type="text" name="first_name" required value="<?= $student ? h($student['first_name']) : '' ?>">
-      </label>
-      <label>นามสกุล *
-        <input type="text" name="last_name" required value="<?= $student ? h($student['last_name']) : '' ?>">
-      </label>
+    <div class="card-header">
+        <h2>
+            <i class="fas fa-<?= $action === 'edit' ? 'pen' : 'user-plus' ?>-circle me-2"
+                style="margin-right: 10px;"></i>
+            <?= $action === 'add' ? 'เพิ่มนิสิตใหม่' : 'แก้ไขนิสิต' ?>
+        </h2>
     </div>
 
-    <div class="row">
-      <label>อีเมล *
-        <input type="email" name="email" required value="<?= $student ? h($student['email']) : '' ?>">
-      </label>
-      <label>เบอร์โทร
-        <input type="text" name="phone" value="<?= $student ? h($student['phone']) : '' ?>" placeholder="เช่น 089-xxx-xxxx">
-      </label>
-    </div>
+    <form method="POST" class="form" style="padding:24px">
 
-    <div class="row">
-      <label>คณะ
-        <input type="text" name="faculty" value="<?= $student ? h($student['faculty']) : '' ?>" placeholder="เช่น วิทยาศาสตร์">
-      </label>
-      <label>สาขา
-        <input type="text" name="major" value="<?= $student ? h($student['major']) : '' ?>" placeholder="เช่น วิทยาการคอมพิวเตอร์">
-      </label>
-    </div>
+        <label>รหัสนิสิต *
+            <input type="text" name="student_code" required value="<?= $student ? h($student['student_code']) : '' ?>"
+                <?= $action === 'edit' ? 'readonly' : '' ?> placeholder="เช่น 6610501234">
+            <small style="color: #666; display: block; margin-top: 4px;">ต้องเป็นตัวเลข 5–20 หลัก
+                <?= $action === 'edit' ? '(ไม่สามารถแก้ไขได้)' : '' ?></small>
+        </label>
 
-    <div class="row">
-      <label>GPA
-        <input type="number" step="0.01" min="0" max="4" name="gpa" value="<?= $student ? h($student['gpa']) : '' ?>" placeholder="0.00 - 4.00">
-      </label>
-      <label>อาจารย์ที่ปรึกษา
-        <select name="advisor_id">
-          <option value="">— ไม่มี —</option>
-          <?php foreach ($advisors as $a): ?>
-            <option value="<?= (int)$a['teacher_id'] ?>" <?= $student && $student['advisor_id'] == $a['teacher_id'] ? 'selected' : '' ?>>
-              <?= h($a['first_name'].' '.$a['last_name']) ?>
-            </option>
-          <?php endforeach; ?>
-        </select>
-      </label>
-    </div>
+        <div class="row">
+            <label>ชื่อ *
+                <input type="text" name="first_name" required value="<?= $student ? h($student['first_name']) : '' ?>">
+            </label>
+            <label>นามสกุล *
+                <input type="text" name="last_name" required value="<?= $student ? h($student['last_name']) : '' ?>">
+            </label>
+        </div>
 
-    <?php if ($action === 'add'): ?>
-      <label>รหัสผ่าน *
-        <input type="password" name="password" required minlength="6" placeholder="อย่างน้อย 6 ตัวอักษร">
-        <small style="color: #666; display: block; margin-top: 4px;">ใช้อักษรตัวใหญ่ ตัวเล็ก และตัวเลขเพื่อความปลอดภัยสูงสุด</small>
-      </label>
-    <?php else: ?>
-      <label>รหัสผ่านใหม่
-        <input type="password" name="password" minlength="6" placeholder="เว้นว่างเพื่อเก็บรหัสเดิม">
-        <small style="color: #666; display: block; margin-top: 4px;">ปล่อยว่างเพื่อไม่เปลี่ยนแปลง</small>
-      </label>
-    <?php endif; ?>
+        <div class="row">
+            <label>อีเมล *
+                <input type="email" name="email" required value="<?= $student ? h($student['email']) : '' ?>">
+            </label>
+            <label>เบอร์โทร
+                <input type="text" name="phone" value="<?= $student ? h($student['phone']) : '' ?>"
+                    placeholder="เช่น 089-xxx-xxxx">
+            </label>
+        </div>
 
-    <div class="actions">
-      <a href="?" class="btn">ยกเลิก</a>
-      <button class="btn btn-primary" type="submit">
-        <i class="fas fa-save me-2"></i> <?= $action === 'add' ? 'เพิ่มนิสิต' : 'บันทึกการเปลี่ยนแปลง' ?>
-      </button>
-    </div>
+        <div class="row">
+            <label>คณะ
+                <input type="text" name="faculty" value="<?= $student ? h($student['faculty']) : '' ?>"
+                    placeholder="เช่น วิทยาศาสตร์">
+            </label>
+            <label>สาขา
+                <input type="text" name="major" value="<?= $student ? h($student['major']) : '' ?>"
+                    placeholder="เช่น วิทยาการคอมพิวเตอร์">
+            </label>
+        </div>
 
-  </form>
+        <div class="row">
+            <label>GPA
+                <input type="number" step="0.01" min="0" max="4" name="gpa"
+                    value="<?= $student ? h($student['gpa']) : '' ?>" placeholder="0.00 - 4.00">
+            </label>
+            <label>อาจารย์ที่ปรึกษา
+                <select name="advisor_id">
+                    <option value="">— ไม่มี —</option>
+                    <?php foreach ($advisors as $a): ?>
+                    <option value="<?= (int)$a['teacher_id'] ?>"
+                        <?= $student && $student['advisor_id'] == $a['teacher_id'] ? 'selected' : '' ?>>
+                        <?= h($a['first_name'].' '.$a['last_name']) ?>
+                    </option>
+                    <?php endforeach; ?>
+                </select>
+            </label>
+        </div>
+
+        <?php if ($action === 'add'): ?>
+        <label>รหัสผ่าน *
+            <input type="password" name="password" required minlength="6" placeholder="อย่างน้อย 6 ตัวอักษร">
+            <small style="color: #666; display: block; margin-top: 4px;">ใช้อักษรตัวใหญ่ ตัวเล็กและตัวเลขเพื่อความปลอดภัยสูงสุด</small>
+        </label>
+        <?php else: ?>
+        <label>รหัสผ่านใหม่
+            <input type="password" name="password" minlength="6" placeholder="เว้นว่างเพื่อเก็บรหัสเดิม">
+            <small style="color: #666; display: block; margin-top: 4px;">ปล่อยว่างเพื่อไม่เปลี่ยนแปลง</small>
+        </label>
+        <?php endif; ?>
+
+        <div class="actions">
+            <a href="?" class="btn">ยกเลิก</a>
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-save me-2"></i> 
+                <?= $action === 'add' ? 'เพิ่มนิสิต' : 'บันทึกการเปลี่ยนแปลง' ?>
+            </button>
+        </div>
+
+    </form>
 </div>
 
-<?php }
-
-
+<?php 
+}

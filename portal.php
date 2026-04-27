@@ -100,7 +100,7 @@ $page_title = 'Portal';
 
             <div class="row g-4 justify-content-center mb-5">
                 <div class="col-lg-3 col-md-6">
-                    <a href="login_student.php" class="portal-card bg-p1">
+                    <a href="login/login_student.php" class="portal-card bg-p1">
                         <div class="portal-icon">
                             <i class="fas fa-user-graduate"> </i>
                         </div>
@@ -113,26 +113,26 @@ $page_title = 'Portal';
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <a href="login_staff.php" class="portal-card bg-p2">
-                        <div class="portal-icon">
-                            <i class="fas fa-file-signature"></i>
-                        </div>
-                        <h3>เจ้าหน้าที่คณะ</h3>
-                        <h4>Staff Portal</h4>
-                        <p>ตรวจสอบและอัปเดต<br>สถานะใบส่งตัว</p>
-                        <div class="portal-arrow">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <a href="login_teacher.php" class="portal-card bg-p3">
+                    <a href="login/login_teacher.php" class="portal-card bg-p2">
                         <div class="portal-icon">
                             <i class="fas fa-chalkboard-teacher"> </i>
                         </div>
                         <h3>อาจารย์</h3>
                         <h4>Teacher Portal</h4>
                         <p>อนุมัติคำร้องขอฝึกงาน<br>และประเมินผล</p>
+                        <div class="portal-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="login/login_staff.php" class="portal-card bg-p3">
+                        <div class="portal-icon">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <h3>เจ้าหน้าที่คณะ</h3>
+                        <h4>Staff Portal</h4>
+                        <p>ตรวจสอบและอัปเดต<br>สถานะใบส่งตัว</p>
                         <div class="portal-arrow">
                             <i class="fas fa-arrow-right"></i>
                         </div>

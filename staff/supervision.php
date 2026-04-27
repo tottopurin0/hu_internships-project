@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $score      = $_POST['score'] !== '' ? (float)$_POST['score'] : null;
     $grade      = trim($_POST['grade'] ?? '');
     $complete   = !empty($_POST['mark_complete']);
+    $failed     = !empty($_POST['mark_failed']);
 
     $stmt = $conn->prepare(
         'SELECT status_id FROM internships_request WHERE request_id = ? AND advisor_id = ?'
@@ -46,14 +47,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute();
         $stmt->close();
 
-        if ($complete && (int)$cur['status_id'] !== 4) {
+        $new_status = null;
+        if ($complete) {
+            $new_status = 4; // เสร็จสิ้น
+        } elseif ($failed) {
+            $new_status = 9; // ไม่ผ่าน/ยกเลิก
+        }
+
+        if ($new_status !== null && (int)$cur['status_id'] !== $new_status) {
             $old = (int)$cur['status_id'];
-            $new = 4;
             $stmt = $conn->prepare('UPDATE internships_request SET status_id = ? WHERE request_id = ?');
-            $stmt->bind_param('ii', $new, $rid);
+            $stmt->bind_param('ii', $new_status, $rid);
             $stmt->execute();
             $stmt->close();
-            log_status_change($conn, $rid, $old, $new, $tid, null, 'ปิดเคสหลังนิเทศ');
+            
+            $log_msg = ($new_status === 4) ? 'ปิดเคสหลังนิเทศ (เสร็จสิ้น)' : 'ปิดเคสหลังนิเทศ (ไม่ผ่าน)';
+            log_status_change($conn, $rid, $old, $new_status, $tid, null, $log_msg);
         }
 
         $msg = 'บันทึกการนิเทศเรียบร้อย';
@@ -86,18 +95,35 @@ if ($view_request) {
 }
 
 $page_title = 'บันทึกการนิเทศ';
-require '../includes/header.php';
-?>
+require '../includes/header.php';?>
 
-<h1><i class="fas fa-clipboard-check me-2" style="color:var(--swu-red); margin-right: 10px;"></i>บันทึกการนิเทศงาน</h1>
+<h1>
+  <i class="fas fa-clipboard-check me-2" style="color:var(--swu-red); margin-right: 10px;"></i>บันทึกการนิเทศงาน
+</h1>
 
 <?php if ($msg): ?><div class="alert alert-success"><i class="fas fa-check me-2"></i><?= h($msg) ?></div><?php endif; ?>
 <?php if ($err): ?><div class="alert alert-error"><i class="fas fa-exclamation-circle me-2"></i><?= h($err) ?></div><?php endif; ?>
 
+<?php 
+// กรองข้อมูลตัวแปร $cases ให้เหลือเฉพาะ status_id = 3
+if (!empty($cases)) {
+    $cases = array_filter($cases, function($case) {
+        // รองรับทั้งกรณีที่ $case เป็น Array และ Object
+        if (is_array($case)) {
+            return isset($case['status_id']) && $case['status_id'] == 3;
+        } elseif (is_object($case)) {
+            return isset($case->status_id) && $case->status_id == 3;
+        }
+        return false;
+    });
+}
+?>
+
 <div class="card card-table">
   <div class="card-header"><h2><i class="fas fa-user-graduate me-2" style="margin-right: 10px;"></i>เคสที่อยู่ภายใต้การดูแล</h2></div>
-  <?php if (!$cases): ?>
+  <?php if (empty($cases)): ?>
     <p class="muted">ยังไม่มีนิสิตที่ต้องนิเทศ</p>
+
   <?php else: ?>
     <table class="tbl">
       <thead><tr><th>#</th><th>นิสิต</th><th>บริษัท</th><th>ช่วง</th><th>สถานะ</th><th></th></tr></thead>
@@ -179,10 +205,16 @@ require '../includes/header.php';
         </select>
       </label>
     </div>
-    <label class="inline">
-      <input type="checkbox" name="mark_complete" value="1">
-      ปิดเคส (เปลี่ยนสถานะเป็น “เสร็จสิ้น”)
-    </label>
+   <div style="margin-bottom: 15px;">
+      <label class="inline" style="margin-right: 20px;">
+        <input type="checkbox" name="mark_complete" value="1">
+        ปิดเคส (เปลี่ยนสถานะเป็น “เสร็จสิ้น”)
+      </label>
+      <label class="inline">
+        <input type="checkbox" name="mark_failed" value="1">
+        ปิดเคส (เปลี่ยนสถานะเป็น “ไม่ผ่าน”)
+      </label>
+    </div>
     <div class="actions">
       <button class="btn btn-primary" type="submit">บันทึก</button>
     </div>

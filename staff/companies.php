@@ -73,13 +73,27 @@ $page_title = 'จัดการบริษัท';
 require '../includes/header.php';
 ?>
 
-<h1><i class="fas fa-building me-2" style="color:var(--swu-red); margin-right: 10px;"></i>จัดการบริษัทคู่สัญญา</h1>
+<h1>
+  <i class="fas fa-building me-2" style="color:var(--swu-red); margin-right: 10px;"></i>จัดการบริษัทคู่สัญญา
+</h1>
 
-<?php if ($msg): ?><div class="alert alert-success"><i class="fas fa-check me-2"></i><?= h($msg) ?></div><?php endif; ?>
-<?php if ($err): ?><div class="alert alert-error"><i class="fas fa-exclamation-circle me-2"></i><?= h($err) ?></div><?php endif; ?>
+<?php if ($msg): ?>
+  <div class="alert alert-success">
+    <i class="fas fa-check me-2"></i><?= h($msg) ?>
+  </div>
+<?php endif; ?>
+<?php if ($err): ?>
+  <div class="alert alert-error">
+    <i class="fas fa-exclamation-circle me-2"></i><?= h($err) ?>
+  </div>
+<?php endif; ?>
 
 <div class="card card-form">
-  <div class="card-header"><h2><i class="fas fa-<?= $edit?'pen':'plus' ?>-circle me-2" style="margin-right: 10px;"></i><?= $edit ? 'แก้ไขบริษัท #'.(int)$edit['company_id'] : 'เพิ่มบริษัทใหม่' ?></h2></div>
+  <div class="card-header">
+    <h2>
+      <i class="fas fa-<?= $edit?'pen':'plus' ?>-circle me-2" style="margin-right: 10px;"></i><?= $edit ? 'แก้ไขบริษัท #'.(int)$edit['company_id'] : 'เพิ่มบริษัทใหม่' ?>
+    </h2>
+  </div>
   <form method="POST" class="form" style="padding:24px">
     <input type="hidden" name="company_id" value="<?= (int)($edit['company_id'] ?? 0) ?>">
     <label>ชื่อบริษัท *
@@ -118,19 +132,35 @@ require '../includes/header.php';
       เปิดใช้งาน (ให้นิสิตเลือกได้)
     </label>
     <div class="actions">
-      <?php if ($edit): ?><a href="companies.php" class="btn">ยกเลิก</a><?php endif; ?>
+      <?php if ($edit): ?>
+        <a href="companies.php" class="btn">ยกเลิก</a>
+      <?php endif; ?>
       <button class="btn btn-primary" type="submit"><?= $edit ? 'บันทึกการแก้ไข' : 'เพิ่มบริษัท' ?></button>
     </div>
   </form>
 </div>
 
 <div class="card card-table">
-  <div class="card-header"><h2><i class="fas fa-list-ul me-2" style="margin-right: 10px;"></i>รายการบริษัท (<?= count($rows) ?>)</h2></div>
+  <div class="card-header">
+    <h2>
+      <i class="fas fa-list-ul me-2" style="margin-right: 10px;"></i>รายการบริษัท (<?= count($rows) ?>)
+    </h2>
+  </div>
   <?php if (!$rows): ?>
     <p class="muted">ยังไม่มีบริษัท</p>
   <?php else: ?>
     <table class="tbl">
-      <thead><tr><th>ID</th><th>ชื่อ</th><th>ประเภท</th><th>จังหวัด</th><th>ผู้ติดต่อ</th><th>สถานะ</th><th></th></tr></thead>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ชื่อ</th>
+          <th>ประเภท</th>
+          <th>จังหวัด</th>
+          <th>ผู้ติดต่อ</th>
+          <th>สถานะ</th>
+          <th></th>
+        </tr>
+      </thead>
       <tbody>
         <?php foreach ($rows as $c): ?>
           <tr>
@@ -146,7 +176,9 @@ require '../includes/header.php';
                 <span class="badge badge-rejected">Inactive</span>
               <?php endif; ?>
             </td>
-            <td><a href="?edit=<?= (int)$c['company_id'] ?>">แก้ไข</a></td>
+            <td>
+              <a href="?edit=<?= (int)$c['company_id'] ?>">แก้ไข</a>
+            </td>
           </tr>
         <?php endforeach; ?>
       </tbody>

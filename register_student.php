@@ -149,7 +149,7 @@ if ($res) {
                     <label class="reg-label">รหัสนิสิต / Username <span class="text-danger">*</span></label>
                     <div class="custom-input">
                         <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
-                        <input type="text" name="student_code" class="form-control" value="<?= h($old['student_code']) ?>" placeholder="รหัสนิสิต 9 หลัก" required>
+                        <input type="text" name="student_code" class="form-control" value="<?= h($old['student_code']) ?>" placeholder="รหัสนิสิต 11 หลัก" required>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -207,14 +207,14 @@ if ($res) {
                     <label class="reg-label">คณะ (Faculty)</label>
                     <div class="custom-input">
                         <span class="input-group-text"><i class="fas fa-building"></i></span>
-                        <input type="text" name="faculty" class="form-control" value="<?= h($old['faculty']) ?>" placeholder="มนุษยศาสตร์">
+                        <input type="text" name="faculty" class="form-control" value="<?= h($old['faculty']) ?>" placeholder="ระบุชื่อคณะ">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label class="reg-label">สาขาวิชา (Major)</label>
                     <div class="custom-input">
                         <span class="input-group-text"><i class="fas fa-graduation-cap"></i></span>
-                        <input type="text" name="major" class="form-control" value="<?= h($old['major']) ?>" placeholder="สารสนเทศศึกษา">
+                        <input type="text" name="major" class="form-control" value="<?= h($old['major']) ?>" placeholder="ระบุชื่อสาขา">
                     </div>
                 </div>
 

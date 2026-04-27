@@ -74,8 +74,6 @@ require '../includes/header.php';
             <h2><i class="fas fa-list me-4" style="margin-right: 10px;"></i>คำขอฝึกงานล่าสุด</h2>
             <div style="display: flex; gap: 10px;">
                 <a class="btn btn-primary" href="request_new.php"><i class="fas fa-plus me-1"></i> ยื่นคำขอใหม่</a>
-                <a class="btn btn-secondary" href="../staff/supervision.php"><i class="fas fa-clipboard-check me-1"></i>
-                    ดูรายการบันทึกนิเทศ</a>
             </div>
         </div>
 

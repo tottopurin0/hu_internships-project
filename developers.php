@@ -128,7 +128,7 @@
                         <div>
                            <h6 class="fw-bold fs-4 text-dark mb-1">ธฤษณัช ภานุกาญจน์</h6>
                            <p class="text-secondary fw-bold mb-0" style="font-size: 18px;">ฟีฟ่า</p>
-                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010128</p>
+                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010128  <br> tissanat.panukan@g.swu.ac.th </p>
                         </div>
 
                     </div>
@@ -145,7 +145,7 @@
                         <div>
                            <h6 class="fw-bold fs-4 text-dark mb-1"> สุนัดดา แสงแก้ว</h6>
                            <p class="text-secondary fw-bold mb-0" style="font-size: 18px;">ใบเตย</p>
-                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010132</p>
+                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010132 <br> sunadda.toeyy@g.swu.ac.th </p>
                         </div>
 
                     </div>
@@ -163,7 +163,7 @@
                         <div>
                            <h6 class="fw-bold fs-4 text-dark mb-1">ชลธิชา คุณเพิ่มศิริ</h6>
                            <p class="text-secondary fw-bold mb-0" style="font-size: 18px;">เนเน่</p>
-                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010617</p>
+                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010617  <br> chonthicha.khunaphoemsiri@g.swu.ac.th </p>
                         </div>
 
                     </div>
@@ -181,7 +181,7 @@
                         <div>
                            <h6 class="fw-bold fs-4 text-dark mb-1">ณัฏฐณิชา พลาธรณ์</h6>
                            <p class="text-secondary fw-bold mb-0" style="font-size: 18px;">ไอโกะ</p>
-                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;;">67101010619</p>
+                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;;">67101010619 <br> nutthanicha.aiko@g.swu.ac.th </p>
                         </div>
 
                     </div>
@@ -199,7 +199,7 @@
                         <div>
                            <h6 class="fw-bold fs-4 text-dark mb-1">ณิชาภัทร จันทร์เอี่ยม</h6>
                            <p class="text-secondary fw-bold mb-0" style="font-size: 18px;">พลอย</p>
-                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010620</p>
+                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010620 <br> nichapat.juneam@g.swu.ac.th </p>
                         </div>
 
                     </div>
@@ -216,7 +216,7 @@
                         <div>
                            <h6 class="fw-bold fs-4 text-dark mb-1">ภูรินทร์ กูลมนุญ</h6>
                            <p class="text-secondary fw-bold mb-0" style="font-size: 18px;">โต๋</p>
-                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010641</p>
+                           <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010641 <br> purin.goonmanoon@g.swu.ac.th </p>
                         </div>
 
                     </div>
