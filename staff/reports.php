@@ -39,10 +39,11 @@ $page_title = 'รายงานภาพรวม';
 require '../includes/header.php';
 ?>
 
+<!-- รายงานระบบภาพรวม -->
 <h1>
   <i class="fas fa-chart-bar me-2" style="color:var(--swu-red); margin-right: 10px;"></i>รายงานภาพรวมระบบ
 </h1>
-
+<!-- เริ่่มสรุปสถานะ -->
 <div class="card card-table">
     <div class="card-header">
         <h2>
@@ -66,8 +67,11 @@ require '../includes/header.php';
         </tbody>
     </table>
 </div>
+<!-- จบ สรุปสถานะ -->
 
+<!-- บันทึกรายการบริษัท -->
 <div class="grid-2">
+    <!-- จำนวนบริษัท -->
     <div class="card card-table">
         <div class="card-header">
             <h2>
@@ -96,6 +100,7 @@ require '../includes/header.php';
         <?php endif; ?>
     </div>
 
+    <!-- จำนวนอาจารย์ -->
     <div class="card card-table">
         <div class="card-header">
             <h2>
@@ -124,7 +129,9 @@ require '../includes/header.php';
         <?php endif; ?>
     </div>
 </div>
+<!-- จบ บันทึกรายการบริษัท -->
 
+<!-- ส่วนแสดงคำขอ -->
 <div class="card card-table">
     <div class="card-header">
         <h2>
@@ -156,3 +163,4 @@ require '../includes/header.php';
         </tbody>
     </table>
 </div>
+<!-- จบ ส่วนแสดงคำขอ -->

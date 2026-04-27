@@ -67,6 +67,7 @@ $page_title = 'ออกใบส่งตัว';
 require '../includes/header.php';
 ?>
 
+<!-- เริ่ม ออกใบส่งตัว -->
 <h1>
   <i class="fas fa-envelope-open-text me-2" style="color:var(--swu-red); margin-right: 10px;"></i>ออกใบส่งตัวฝึกงาน
 </h1>
@@ -170,4 +171,5 @@ require '../includes/header.php';
     <button class="btn" type="button" onclick="window.print()">พิมพ์</button>
     <?php endif; ?>
 </div>
+<!-- จบการออกใบส่งตัว -->
 <?php endif; ?>

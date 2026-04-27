@@ -86,6 +86,7 @@
     }
     </style>
 </head>
+<!-- จบ -->
 
 <body class="bg-light">
 
@@ -102,13 +103,13 @@
         </div>
 
         <div class="carousel-inner">
-            <!-- รูปที่ 1 -->
+            <!-- รูปที่ 1 พระพันปีหลวง-->
             <div class="carousel-item active">
                 <img src="./img/sirigit.jpg" alt="sirigit">
                 <div class="carousel-overlay"></div>
             </div>
 
-            <!-- รูปที่ 2 -->
+            <!-- รูปที่ 2 welcome-->
             <div class="carousel-item">
                 <img src="./img/welcome.jpg" alt="University">
                 <div class="carousel-overlay"></div>
@@ -118,13 +119,13 @@
                 </div>
             </div>
 
-            <!-- รูปที่ 3 -->
+            <!-- รูปที่ 3 สวัสดีวันสงกรานต์-->
             <div class="carousel-item">
                 <img src="./img/sornkran.jpg" alt="festival">
                 <div class="carousel-overlay"></div>
             </div>
         </div>
-
+        <!-- ส่วนปุ่มกดด้านข้าง และด้านล่าง -->
         <button class="carousel-control-prev" type="button" data-bs-target="#swuCarousel" data-bs-slide="prev"
             style="z-index: 3; width: 7%;">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -136,16 +137,16 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <!-- ======================= ส่วน ปรัชญา (เพิ่มใหม่) ======================= -->
-<!-- ใส่สีพื้นหลังให้ดูมีมิติอ่อนๆ เลียนแบบภาพตัวอย่าง -->
+    <!-- ======================= ส่วน ปรัชญา  ======================= -->
+
+    <!-- สีพื้นหลังให้อ่อนๆ ไล่สี -->
 <div class="py-5" style="background: linear-gradient(90deg, #fffbfb 0%, #ffdede 100%);">
-    <!-- ======================= ส่วน ประโยคเด่นตรงกลาง ======================= -->
+    <!-- ======================= ประโยคปรัชญา ======================= -->
     <div class="container py-6">
         <div class="row justify-content-center text-center">
             
             <div class="col-12 col-md-10 mt-3 mb-3">
                 
-                <!-- ตัวอักษรเด่นๆ เพียวๆ -->
                 <h2 class="fw-bold mb-0" style="color: #112a46; line-height: 1.6; font-size: 40px;">
                     " สารสนเทศนำไปสู่การจัดการสารสนเทศเพื่อสังคมในยุคดิจิทัล "
                 </h2>
@@ -153,7 +154,7 @@
                     Information leads to Information management for Society in the Digital
                 </h3>
 
-                <!-- แถม: เส้นขีดสีแดงเล็กๆ ใต้ข้อความ ช่วยให้ดูไม่โล่งและดูมีสไตล์ (ถ้าไม่ชอบ ลบบรรทัดล่างนี้ทิ้งได้เลยครับ) -->
+                <!-- เส้นขีดสีแดงเล็กๆ ใต้ข้อความ -->
                 <div class="mx-auto mt-4" style="width: 300px; height: 4px; background-color: #c4122d; border-radius: 2px;"></div>
 
             </div>
@@ -162,7 +163,6 @@
     </div>
 
 </div>
-<!-- ======================= จบส่วน ปรัชญา ======================= -->
 
     <!-- ================= ส่วน ข่าวสารกิจกรรม ================= -->
     <div class="container py-5 mt-4" id="showcase">
@@ -202,7 +202,7 @@
                 </div>
             </div>
 
-            <!-- การ์ด 2 -->
+            <!-- การ์ดกิจกรรม 2 -->
             <div class="col-lg-4 col-md-6 a-item academic" style="min-width: 320px;">
                 <div
                     class="activity-card-item h-100 d-flex flex-column bg-white shadow-sm border-0 rounded-4 overflow-hidden position-relative">
@@ -232,7 +232,7 @@
                 </div>
             </div>
 
-            <!-- การ์ด 3 -->
+            <!-- การ์ดกิจกรรม 3 -->
             <div class="col-lg-4 col-md-6 a-item student" style="min-width: 320px;">
                 <div
                     class="activity-card-item h-100 d-flex flex-column bg-white shadow-sm border-0 rounded-4 overflow-hidden position-relative">
@@ -272,7 +272,7 @@
 
     </div>
 
-    <!-- ดึงส่วนท้ายมาแสดง -->
+    <!-- ดึงส่วนท้ายมาแสดง footer -->
     <?php include 'footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

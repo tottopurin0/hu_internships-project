@@ -74,6 +74,7 @@ if ($action === 'list') {
     $staff_list = $conn->query('SELECT * FROM faculty_staff ORDER BY first_name')->fetch_all(MYSQLI_ASSOC);
     ?>
 
+<!-- ส่วนการเพิ่มและจีดการ เจ้าหน้าที่ -->
 <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
     <h1>
       <i class="fas fa-id-badge me-2" style="margin-right: 10px;"></i>จัดการเจ้าหน้าที่
@@ -82,6 +83,7 @@ if ($action === 'list') {
       <i class="fas fa-user-plus me-1"style="margin-right: 10px;"></i>เพิ่มเจ้าหน้าที่ใหม่
     </a>
 </div>
+<!-- จบ ส่วนการเพิ่มและจีดการ เจ้าหน้าที่ -->
 
 <?php if ($msg): ?>
 <div class="alert alert-success">
@@ -158,6 +160,7 @@ if ($action === 'list') {
 </div>
 <?php endif; ?>
 
+<!-- ส่วนกล่องการเพิ่มเจ้าหน้าที่ -->
 <div class="card card-form">
     <div class="card-header">
         <h2>
@@ -215,5 +218,5 @@ if ($action === 'list') {
 
     </form>
 </div>
-
+<!-- จบ ส่วนกล่องการเพิ่มเจ้าหน้าที่ --> 
 <?php }

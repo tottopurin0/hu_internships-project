@@ -125,7 +125,7 @@
     <!-- ดึง Navbar -->
     <?php include 'navbar.php'; ?>
 
-    <!-- ================= 1. แบนเนอร์หัวเรื่อง ================= -->
+    <!-- กล่องด้านบนที่เป็นรูปภาพพร้อมตัวอักษร รายละเอียดของหลักสูตร -->
     <div class="curriculum-hero pb-5">
         <div class="container py-4">
             <h1 class="fw-bold mb-3"><i class="fas fa-graduation-cap mb-2"></i><br>รายละเอียดของหลักสูตร</h1>
@@ -134,15 +134,15 @@
                 2565</span>
         </div>
     </div>
-
+    <!-- กล่องข้อมูลทั่วไป -->
     <div class="container py-5" style="max-width: 1000px;">
 
-        <!-- ================= 2. ข้อมูลทั่วไป ================= -->
+        <!-- ================= ข้อมูลทั่วไป ================= -->
         <div class="info-card" id="general-info">
             <h3 class="section-title">ข้อมูลทั่วไป</h3>
 
             <div class="row g-4 mb-4">
-                <!-- ฝั่งซ้าย -->
+                <!-- ข้อมูลฝั่งซ้าย -->
                 <div class="col-md-6 border-end-md">
                     <div class="mb-3"><i class="fas fa-university list-icon"></i> <b>ชื่อสถาบันอุดมศึกษา:</b>
                         มหาวิทยาลัยศรีนครินทรวิโรฒ</div>
@@ -153,7 +153,7 @@
                         หลักสูตรระดับปริญญาตรี 4 ปี</div>
                 </div>
 
-                <!-- ฝั่งขวา -->
+                <!-- ข้อมูลฝั่งขวา -->
                 <div class="col-md-6 ps-md-4">
                     <p class="mb-1 text-danger fw-bold"><i class="fas fa-bookmark me-2"></i>ชื่อหลักสูตร</p>
                     <ul class="text-muted small mb-3" style="list-style-type: square;">
@@ -170,6 +170,7 @@
                     </ul>
                 </div>
             </div>
+            <!-- จบกล่องครึ่งบน -->
 
             <!-- อาชีพที่ประกอบได้ -->
             <div class="highlight-box">
@@ -191,11 +192,11 @@
             </div>
         </div>
 
-        <!-- ================= 3. ข้อมูลเฉพาะของหลักสูตร ================= -->
+        <!-- ================= ข้อมูลเฉพาะของหลักสูตร ================= -->
         <div class="info-card mt-4" id="specific-info">
             <h3 class="section-title">ข้อมูลเฉพาะของหลักสูตร</h3>
 
-            <!-- ปรัชญา -->
+            <!-- ส่วนปรัชญาของสาขา -->
             <div class="text-center p-4 bg-dark text-white rounded-3 shadow-sm mb-5 position-relative">
                 <i class="fas fa-quote-left fs-1 text-white opacity-25 position-absolute"
                     style="top: 15px; left: 20px;"></i>
@@ -232,9 +233,10 @@
                     และสามารถนำความรู้ไปประยุกต์ใช้ได้อย่างมีประสิทธิภาพในวิชาชีพด้านสารสนเทศ
                 </p>
             </div>
+            <!-- จบส่วนความสำคัญ -->
 
+            <!-- เริ่มวัตถุประสงค์ -->
             <div class="row mt-4">
-                <!-- วัตถุประสงค์ -->
                 <div class="col-md-12 mb-5">
                     <h5 class="fw-bold text-dark mb-3"><i class="fas fa-bullseye text-primary me-2"></i>
                         วัตถุประสงค์ของหลักสูตร</h5>
@@ -247,6 +249,7 @@
                     </ul>
                 </div>
             </div>
+            <!-- จบส่วนวัตถุประสงค์ -->
 
             <!-- ผลลัพธ์การเรียนรู้ PLO -->
             <div class="mb-5 p-4 rounded-3" style="background-color: #f8f9fa; border: 1px solid #dee2e6;">
@@ -272,6 +275,7 @@
                     </li>
                 </ul>
             </div>
+            <!-- จบส่วนผลลัพธ์ -->
 
             <!-- จุดเด่นของหลักสูตร -->
             <div>
@@ -305,10 +309,11 @@
                         </div>
                     </div>
                 </div>
+                <!-- จบส่วนจุดเด่นของหลักสูตร -->
             </div>
 
-        </div> <!-- End Info Card -->
-
+        </div>
+        <!-- End Info Card -->
     </div>
 
     <!-- ดึง Footer -->

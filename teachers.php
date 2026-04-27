@@ -18,7 +18,6 @@
         color: white;
         text-align: center;
         margin-top: 0;
-        /* <--- เปลี่ยนตรงนี้เป็น 0 (แบนเนอร์จะชิดขอบพอดี) */
         margin-bottom: 40px;
     }
 
@@ -98,7 +97,7 @@
 <body class="bg-light">
 
     <?php include 'navbar.php'; ?>
-
+ <!-- กล่องด้านบนที่เป็นรูปภาพพร้อมตัวอักษร คณาจารย์ประจำหลักสูตร -->
     <div class="teacher-hero pb-5">
         <div class="container py-4">
             <h1 class="fw-bold mb-3">
@@ -108,6 +107,8 @@
             <p class="fs-6 fw-light mb-0">คณะอาจารย์ ประจำหลักสูตร</p>
         </div>
     </div>
+
+    <!-- เริ่มกล่องกรรมการสาขา -->
     <div class="container py-5 mt-4" id="showcase">
 
         <h3 class="fw-bold text-danger mb-4 border-start border-4 border-danger ps-3">
@@ -194,6 +195,7 @@
             </div>
         </div>
     </div>
+    <!-- เริ่มส่วน อาจารย์ผู้สอน -->
 
     <div class="container mt-0 pt-0 pb-5 " id="showcase">
 
@@ -395,7 +397,7 @@
                             <img src="./img/t_Vipakorn.jpg" class="modal-profile-img bg-light p-3">
                             <h5 class="fw-bold mt-2 mb-0">
                                 <a href="resume/vipakorn.pdf" target="_blank" class="text-dark text-decoration-none">
-                                    ผู้ช่วยศาสตราจารย์ ดร. วิภากร วัฒนสินธุ์ 
+                                    ผู้ช่วยศาสตราจารย์ <br> ดร. วิภากร วัฒนสินธุ์ 
                                     <i class="fas fa-external-link-alt fa-xs text-secondary"></i>
                                 </a>
                             </h5>

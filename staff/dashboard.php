@@ -6,15 +6,25 @@ require_role(['teacher','staff']);
 $role = current_role();
 $user = current_user();
 
-$counts = $conn->query(
-    'SELECT status_id, COUNT(*) AS n FROM internships_request GROUP BY status_id'
-)->fetch_all(MYSQLI_ASSOC);
-
+// 1. เตรียมตัวแปรสำหรับเก็บค่าสถิติ (ค่าเริ่มต้นเป็น 0 ทุกสถานะ)
 $by_status = array_fill_keys([1,2,3,4,9], 0);
-foreach ($counts as $c) $by_status[(int)$c['status_id']] = (int)$c['n'];
 
 if ($role === 'teacher') {
     $tid = (int)$user['teacher_id'];
+
+    // --- ดึงจำนวนสถิติ (กรองเฉพาะของอาจารย์ท่านนี้ เพื่อให้ตัวเลขสัมพันธ์กับรายการ) ---
+    $stmt_count = $conn->prepare(
+        'SELECT status_id, COUNT(*) AS n 
+         FROM internships_request 
+         WHERE advisor_id = ? 
+         GROUP BY status_id'
+    );
+    $stmt_count->bind_param('i', $tid);
+    $stmt_count->execute();
+    $counts = $stmt_count->get_result()->fetch_all(MYSQLI_ASSOC);
+    $stmt_count->close();
+
+    // --- ดึงรายการคำขอล่าสุด 20 รายการ ---
     $stmt = $conn->prepare(
         'SELECT r.request_id, r.start_date, r.end_date, r.status_id, r.position AS position_title,
                 s.first_name, s.last_name, s.student_code, c.company_name
@@ -25,7 +35,16 @@ if ($role === 'teacher') {
          ORDER BY r.created_at DESC LIMIT 20'
     );
     $stmt->bind_param('i', $tid);
+
 } else {
+    // --- ดึงจำนวนสถิติ (เจ้าหน้าที่เห็นข้อมูลทั้งหมดในระบบ) ---
+    $counts = $conn->query(
+        'SELECT status_id, COUNT(*) AS n 
+         FROM internships_request 
+         GROUP BY status_id'
+    )->fetch_all(MYSQLI_ASSOC);
+
+    // --- ดึงรายการคำขอล่าสุด 20 รายการ ---
     $stmt = $conn->prepare(
         'SELECT r.request_id, r.start_date, r.end_date, r.status_id, r.position AS position_title,
                 s.first_name, s.last_name, s.student_code, c.company_name
@@ -35,6 +54,13 @@ if ($role === 'teacher') {
          ORDER BY r.created_at DESC LIMIT 20'
     );
 }
+
+// นำผลลัพธ์จากการ Query สถิติมาใส่ใน Array $by_status
+foreach ($counts as $c) {
+    $by_status[(int)$c['status_id']] = (int)$c['n'];
+}
+
+// รันคำสั่งดึงรายการคำขอล่าสุด
 $stmt->execute();
 $recent = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
@@ -43,18 +69,19 @@ $page_title = 'หน้าหลัก';
 require '../includes/header.php';
 ?>
 
+<!-- ส่วนแสดง หลัง login-->
 <h1>
   <i class="fa-solid fa-address-card me-2" style="color:var(--swu-red)"></i> สวัสดี <?= h($user['display_name']) ?>
 </h1>
 <p class="muted">
     บทบาท: <?= $role === 'teacher' ? 'อาจารย์' : 'เจ้าหน้าที่' ?>
     <?php if ($role === 'teacher' && !empty($user['department'])): ?>
-    · <?= h($user['department']) ?>
+        · <?= h($user['department']) ?>
     <?php elseif ($role === 'staff' && !empty($user['position'])): ?>
-    · <?= h($user['position']) ?>
+        · <?= h($user['position']) ?>
     <?php endif; ?>
 </p>
-
+<!-- ส่วนแสดงสถานะ -->
 <div class="stats">
     <div class="stat-card">
         <div class="num"><?= $by_status[1] ?></div>
@@ -77,7 +104,9 @@ require '../includes/header.php';
         <div>ยกเลิก/ไม่ผ่าน</div>
     </div>
 </div>
+<!-- จบ ส่วนแสดงสถานะ -->
 
+<!-- ส่วนแสดงการอนุมัติฝ฿กงาน -->
 <div class="card card-table">
     <div class="card-header">
         <h2>
@@ -85,57 +114,60 @@ require '../includes/header.php';
         </h2>
         <div style="display: flex; gap: 10px;">
             <?php if ($role === 'teacher'): ?>
-            <a class="btn btn-primary" href="approve_requests.php">
-              <i class="fas fa-check-circle me-1" style="margin-right: 10px;"></i>ไปอนุมัติคำขอ
-            </a>
-            <a class="btn btn-secondary" href="supervision.php">
-              <i class="fas fa-clipboard-check me-1" style="margin-right: 10px;"></i>ดูรายการบันทึกนิเทศ
-            </a>
+                <a class="btn btn-primary" href="approve_requests.php">
+                  <i class="fas fa-check-circle me-1" style="margin-right: 10px;"></i>ไปอนุมัติคำขอ
+                </a>
+                <a class="btn btn-secondary" href="supervision.php">
+                  <i class="fas fa-clipboard-check me-1" style="margin-right: 10px;"></i>ดูรายการบันทึกนิเทศ
+                </a>
             <?php else: ?>
-            <a class="btn btn-primary" href="issue_letter.php">
-              <i class="fas fa-envelope-open-text me-1" style="margin-right: 10px;"></i>ออกใบส่งตัว
-            </a>
-            <a class="btn btn-secondary" href="supervision.php">
-              <i class="fas fa-clipboard-check me-1" style="margin-right: 10px;"></i>ดูรายการบันทึกนิเทศ
-            </a>
+                <a class="btn btn-primary" href="issue_letter.php">
+                  <i class="fas fa-envelope-open-text me-1" style="margin-right: 10px;"></i>ออกใบส่งตัว
+                </a>
+                <a class="btn btn-secondary" href="supervision.php">
+                  <i class="fas fa-clipboard-check me-1" style="margin-right: 10px;"></i>ดูรายการบันทึกนิเทศ
+                </a>
             <?php endif; ?>
         </div>
     </div>
+    <!-- จบ ส่วนแสดงการอนุมัติฝ฿กงาน -->
 
+    <!-- การจัดการการอนุมัติ -->
     <?php if (!$recent): ?>
-    <p class="muted">ยังไม่มีคำขอ</p>
+        <p class="muted">ยังไม่มีคำขอ</p>
     <?php else: ?>
-    <table class="tbl">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>นิสิต</th>
-                <th>บริษัท</th>
-                <th>ช่วง</th>
-                <th>สถานะ</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($recent as $r): [$l,$c] = status_label($r['status_id']); ?>
-            <tr>
-                <td>#<?= (int)$r['request_id'] ?></td>
-                <td><?= h($r['student_code']) ?> <?= h($r['first_name'].' '.$r['last_name']) ?></td>
-                <td><?= h($r['company_name']) ?></td>
-                <td><?= h($r['start_date']) ?> → <?= h($r['end_date']) ?></td>
-                <td>
-                  <span class="badge <?= h($c) ?>"><?= h($l) ?></span>
-                </td>
-                <td>
-                    <?php if ($role === 'teacher'): ?>
-                    <a href="approve_requests.php?id=<?= (int)$r['request_id'] ?>">จัดการ</a>
-                    <?php else: ?>
-                    <a href="issue_letter.php?id=<?= (int)$r['request_id'] ?>">จัดการ</a>
-                    <?php endif; ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+        <table class="tbl">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>นิสิต</th>
+                    <th>บริษัท</th>
+                    <th>ช่วง</th>
+                    <th>สถานะ</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($recent as $r): [$l,$c] = status_label($r['status_id']); ?>
+                <tr>
+                    <td>#<?= (int)$r['request_id'] ?></td>
+                    <td><?= h($r['student_code']) ?> <?= h($r['first_name'].' '.$r['last_name']) ?></td>
+                    <td><?= h($r['company_name']) ?></td>
+                    <td><?= h($r['start_date']) ?> → <?= h($r['end_date']) ?></td>
+                    <td>
+                      <span class="badge <?= h($c) ?>"><?= h($l) ?></span>
+                    </td>
+                    <td>
+                        <?php if ($role === 'teacher'): ?>
+                          <a href="approve_requests.php?id=<?= (int)$r['request_id'] ?>">จัดการ</a>
+                        <?php else: ?>
+                          <a href="issue_letter.php?id=<?= (int)$r['request_id'] ?>">จัดการ</a>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <!-- จบ  -->
     <?php endif; ?>
 </div>

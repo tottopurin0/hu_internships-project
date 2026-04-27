@@ -75,6 +75,8 @@ if ($res) {
     $teachers = $res->fetch_all(MYSQLI_ASSOC);
 }
 ?>
+
+<!-- เริ่มส่วน HTML CSS -->
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -83,49 +85,122 @@ if ($res) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- ส่วน style -->
     <style>
         body { 
-            font-family: 'Kanit', sans-serif; background-color: #f6f7f9; 
-            display: flex; align-items: center; justify-content: center; 
-            min-height: 100vh; margin: 0; padding: 40px 15px; 
+            font-family: 'Kanit', sans-serif; 
+            background-color: #f6f7f9; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 40px 15px; 
         }
         
         .reg-card { 
-            background: white; padding: 45px; border-radius: 15px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06); width: 100%; max-width: 800px; 
+            background: white; 
+            padding: 45px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06); 
+            width: 100%; 
+            max-width: 800px; 
         }
         .reg-icon { 
-            width: 75px; height: 75px; border-radius: 50%; display: flex; 
-            align-items: center; justify-content: center; font-size: 32px; 
-            color: white; margin: 0 auto 15px auto; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); 
+            width: 75px; 
+            height: 75px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 32px; 
+            color: white; 
+            margin: 0 auto 15px auto; 
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); 
             background-color: #ffc107; 
         }
         
         .custom-input { 
-            border: 1px solid #ced4da; border-radius: 8px; overflow: hidden; margin-bottom: 18px; display: flex; align-items: center; 
+            border: 1px solid #ced4da; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            margin-bottom: 18px; 
+            display: flex; 
+            align-items: center; 
         }
-        .custom-input .input-group-text { background: transparent; border: none; color: #ffc107; padding-left: 15px; width: 45px; justify-content: center;}
-        .custom-input .form-control { border: none; font-size: 14.5px; padding: 11px 10px 11px 0; box-shadow: none; outline: none; }
-        .custom-input select.form-control { color: #495057; cursor: pointer; }
+
+        .custom-input .input-group-text { 
+            background: transparent; 
+            border: none; color: #ffc107; 
+            padding-left: 15px; width: 45px; 
+            justify-content: center;
+        }
+
+        .custom-input .form-control { 
+            border: none; 
+            font-size: 14.5px; 
+            padding: 11px 10px 11px 0; 
+            box-shadow: none; 
+            outline: none; 
+        }
+
+        .custom-input select.form-control { 
+            color: #495057; 
+            cursor: pointer; 
+        }
         
-        .reg-label { text-align: left; display: block; font-size: 13.5px; font-weight: 700; margin-bottom: 6px; color: #444; }
+        .reg-label { 
+            text-align: left; 
+            display: block; 
+            font-size: 13.5px; 
+            font-weight: 700; 
+            margin-bottom: 6px; 
+            color: #444; 
+        }
         
-        .btn-reg { background-color: #212529; color: white; border: none; font-size: 16px; font-weight: bold; letter-spacing: 0.5px; transition: 0.3s; padding: 12px 0;}
-        .btn-reg:hover { background-color: #ffc107; color: black; box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3); }
+        .btn-reg { 
+            background-color: #212529; 
+            color: white; 
+            border: none; 
+            font-size: 16px; 
+            font-weight: bold; 
+            letter-spacing: 0.5px; 
+            transition: 0.3s; 
+            padding: 12px 0;
+        }
         
-        .section-title { font-size: 16px; color: #c4122d; font-weight: 800; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; margin-bottom: 20px; margin-top: 15px; }
+        .btn-reg:hover { 
+            background-color: #ffc107; 
+            color: black; 
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3); 
+        }
+        
+        .section-title { 
+            font-size: 16px; 
+            color: #c4122d; 
+            font-weight: 800; 
+            border-bottom: 2px solid #f0f0f0; 
+            padding-bottom: 8px; 
+            margin-bottom: 20px; 
+            margin-top: 15px; 
+        }
+
     </style>
 </head>
+<!-- จบส่วน Style -->
+
+<!-- เริ่่มส่วนหน้าลงทะเบียน -->
 <body>
     <div class="reg-card">
-        
+        <!-- ส่วนหัวเรื่อง -->
         <div class="reg-icon">
             <i class="fas fa-user-plus"></i>
         </div>
-        
+        <!-- หัวข้อ -->
         <h3 class="fw-bold text-dark text-center mb-1">ลงทะเบียนบัญชีนิสิต</h3>
         <p class="text-muted small text-center mb-4">ระบบบันทึกคำร้องขอฝึกงาน (Internships System)</p>
         
+        <!-- ส่วนการดึงข้อมูล -->
         <?php if ($msg): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <i class="fas fa-check-circle me-2"></i><?= $msg ?>
@@ -140,9 +215,11 @@ if ($res) {
                 </ul>
             </div>
         <?php endif; ?>
+        <!-- จบส่วนการดึงข้อมูล -->
         
+        <!-- เริ่มส่วนบันทึกข้อมูล -->
         <form method="POST">
-            
+            <!-- ส่วนข้อมูลเข้าสู่ระบบ -->
             <div class="section-title">1. ข้อมูลการเข้าสู่ระบบ</div>
             <div class="row">
                 <div class="col-md-12">
@@ -167,7 +244,9 @@ if ($res) {
                     </div>
                 </div>
             </div>
+        <!-- จบส่วนข้อมูลเข้าสู่ระบบ -->
 
+        <!-- เริ่มส่วนข้อมูลส่วนตัว -->
             <div class="section-title">2. ข้อมูลส่วนตัวพื้นฐาน</div>
             <div class="row">
                 <div class="col-md-6">
@@ -200,7 +279,9 @@ if ($res) {
                     </div>
                 </div>
             </div>
+            <!-- จบส่วนข้อมูลส่วนตัว -->
 
+            <!-- เริ่มส่วนข้อมูลการศึกษา -->
             <div class="section-title">3. ข้อมูลการศึกษา</div>
             <div class="row">
                 <div class="col-md-6">
@@ -264,13 +345,18 @@ if ($res) {
                     </div>
                 </div>
             </div>
+            <!-- จบ ส่วนข้อมูลการศึกษา -->
+
             
+            <!-- ส่วนปุ่มการกดสร้าง -->
             <button type="submit" class="btn btn-reg w-100 rounded-5 mt-4"><i class="fas fa-save me-2"></i> สร้างบัญชีผู้ใช้นิสิต</button>
         </form>
         
+        <!-- ส่วนการกลับไปหน้าหลัก -->
         <div class="text-center mt-4">
             <a href="portal.php" class="text-muted small fw-bold text-decoration-none"><i class="fas fa-arrow-left"></i> กลับไปหน้าเลือกระบบ</a>
         </div>
+        <!-- จบ -->
     </div>
 </body>
 </html>

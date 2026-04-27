@@ -1,18 +1,19 @@
 <?php
+// 1. ตรวจสอบว่าระบบเปิด Session หรือยัง ถ้ายังให้เปิดใช้งาน (เอาไว้เก็บสถานะการล็อกอิน) และดึงไฟล์ auth.php เข้ามา [cite: 1]
 if (session_status() === PHP_SESSION_NONE) session_start();
 require_once __DIR__ . '/includes/auth.php';
-
+// 2. ดักทางเข้า: ถ้าไม่ได้เข้ามาหน้านี้ด้วยการกดปุ่ม Submit จากฟอร์ม (POST) ให้เด้งกลับไปหน้า login [cite: 1]
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: login.php');
     exit;
 }
-
+// 3. รับค่าจากฟอร์ม: ตัดช่องว่างหน้า-หลังทิ้งด้วย trim() ถ้ารับค่าไม่ได้ให้ตั้งเป็นค่าว่างไว้ก่อน [cite: 2]
 $role     = trim($_POST['role']     ?? '');
 $username = trim($_POST['username'] ?? '');
 $password = $_POST['password']      ?? '';
-
+// จำ Role (สถานะผู้ใช้) เอาไว้ใน Session ก่อน เผื่อล็อกอินไม่ผ่านจะได้รู้ว่าส่งกลับไปหน้าไหน [cite: 3]
 $_SESSION['login_role'] = $role;
-
+// 4. เช็คความเรียบร้อย: ถ้าผู้ใช้กรอกข้อมูลมาไม่ครบช่อง ให้เซ็ตข้อความแจ้งเตือน [cite: 4
 if ($role === '' || $username === '' || $password === '') {
     $_SESSION['login_error'] = 'กรุณากรอกข้อมูลให้ครบถ้วน';
     header('Location: login.php');
@@ -21,8 +22,9 @@ if ($role === '' || $username === '' || $password === '') {
 
 $user_row = null;
 $display_name = '';
-
+// 5. ตรวจสอบบัญชีผู้ใช้: แยกหาข้อมูลในฐานข้อมูลตาม Role ที่เลือกมา [cite: 5]
 switch ($role) {
+    // กรณีนิสิต
     case 'student':
         $stmt = $conn->prepare(
             'SELECT student_id, student_code, password, first_name, last_name, advisor_id, faculty, major
@@ -45,7 +47,7 @@ switch ($role) {
             ];
         }
         break;
-
+// กรณีอาจารย์
     case 'teacher':
         $stmt = $conn->prepare(
             'SELECT teacher_id, username, password, first_name, last_name, department
@@ -66,7 +68,7 @@ switch ($role) {
             ];
         }
         break;
-
+// กรณีเจ้าหน้าที่
     case 'staff':
         $stmt = $conn->prepare(
             'SELECT faculty_staff_id AS staff_id, username, password, first_name, last_name, position
@@ -88,7 +90,7 @@ switch ($role) {
         }
         break;
 }
-
+// 6. จัดการกรณีล็อกอิน "ไม่ผ่าน" (ตัวแปร $user_row ยังเป็น null อยู่) [cite: 21]
 if (!$user_row) {
     $_SESSION['login_error'] = 'Username หรือ Password ไม่ถูกต้อง';
     
@@ -104,11 +106,12 @@ if (!$user_row) {
     }
     exit;
 }
+// 7. จัดการกรณีล็อกอิน "ผ่าน" [cite: 25]
 session_regenerate_id(true);
 $_SESSION['user'] = $user_row;
 $_SESSION['role'] = $role;
 unset($_SESSION['login_error'], $_SESSION['login_role']);
-
+// 8. พาผู้ใช้ไปยังหน้า Dashboard ของตัวเอง [cite: 26]
 if ($role === 'student') {
     header('Location: student/dashboard.php');
 } else {

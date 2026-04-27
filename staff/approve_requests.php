@@ -82,6 +82,7 @@ $page_title = 'อนุมัติคำขอ';
 require '../includes/header.php';
 ?>
 
+<!-- เริ่ม การอนุมัติคำขอฝึกงาน-->
 <h1>
   <i class="fas fa-check-circle me-2" style="color:var(--swu-red); margin-right: 10px;"></i>อนุมัติคำขอฝึกงาน
 </h1>
@@ -96,7 +97,7 @@ require '../includes/header.php';
     <i class="fas fa-exclamation-circle me-2"></i><?= h($err) ?>
   </div>
 <?php endif; ?>
-
+<!-- โชว์ผลคำขอที่รอพิจารณา -->
 <div class="card card-table">
     <div class="card-header">
         <h2>
@@ -135,8 +136,10 @@ require '../includes/header.php';
     </table>
     <?php endif; ?>
 </div>
+<!-- จบ ส่วนโชว์ผลคำขอที่รอพิจารณา -->
 
 <?php if ($selected): [$lbl, $cls] = status_label($selected['status_id']); ?>
+<!-- การแสดงรายละเอียดคำขอ -->
 <div class="card card-form">
     <div class="card-header">
         <h2>
@@ -145,6 +148,7 @@ require '../includes/header.php';
           </h2>
         <span class="badge <?= h($cls) ?>"><?= h($lbl) ?></span>
     </div>
+    <!-- ส่วนข้อมูล -->
     <div class="card-body" style="padding: 24px;">
         <dl class="kv">
             <dt>นิสิต</dt>
@@ -171,6 +175,7 @@ require '../includes/header.php';
             <label>หมายเหตุ (ถึงนิสิต)
                 <textarea name="remark" rows="3" placeholder="ข้อคิดเห็น, เงื่อนไข, ฯลฯ"></textarea>
             </label>
+            <!-- ปุ่มการอนุมัติ -->
             <div class="actions">
                 <button class="btn btn-danger" name="action" value="reject">
                   <i class="fas fa-times-circle me-1" style="margin-right: 10px;"></i>ไม่อนุมัติ
@@ -179,10 +184,13 @@ require '../includes/header.php';
                   <i class="fas fa-check-circle me-1" style="margin-right: 10px;"></i>อนุมัติ
                 </button>
             </div>
+            <!-- จบ ปุ่มการอนุมัติ -->
         </form>
         <?php else: ?>
         <p class="muted">คำขอนี้ได้รับการพิจารณาแล้ว — ไม่สามารถแก้ไขได้</p>
         <?php endif; ?>
     </div>
+    <!-- จบ ส่วนข้อมูล -->
 </div>
+<!-- จบ การแสดงรายละเอียดคำขอ -->
 <?php endif; ?>

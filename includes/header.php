@@ -20,17 +20,19 @@ $current = basename($_SERVER['PHP_SELF']);
 <body>
 
     <div class="top-red-bar"></div>
-
+<!-- ส่วนโลโก้  -->
     <header class="custom-navbar">
         <a class="navbar-brand" href="/index.php">
             <img src="../img/swu_Logo.png" alt="SWU" class="brand-logo">
             <div class="brand-divider"></div>
+            <!-- ส่วนชื่อมหาวิทยาลัย -->
             <div class="logo-text">
                 <h1>มหาวิทยาลัยศรีนครินทรวิโรฒ</h1>
                 <p>SRINAKHARINWIROT UNIVERSITY</p>
             </div>
         </a>
-
+<!-- จบ ส่วนโลโก้  -->
+        <!-- เริ่ม ส่วนรายการ -->
         <nav class="nav-main">
             <?php if ($role === 'student'): ?>
             <a href="dashboard.php" class="<?= $current==='dashboard.php'?'active':'' ?>">
@@ -74,12 +76,17 @@ $current = basename($_SERVER['PHP_SELF']);
             <a href="issue_letter.php" class="<?= $current==='issue_letter.php'?'active':'' ?>">
               <i class="fas fa-envelope-open-text me-1"></i> ใบส่งตัว
             </a>
+            <a href="supervision.php" class="<?= $current==='supervision.php'?'active':'' ?>">
+              <i class="fas fa-clipboard-check me-1"></i> บันทึกนิเทศ
+            </a>
             <a href="reports.php" class="<?= $current==='reports.php'?'active':'' ?>">
               <i class="fas fa-chart-bar me-1"></i> รายงาน
             </a>
             <?php endif; ?>
         </nav>
+        <!-- จบ ส่วนรายการ -->
 
+        <!-- ส่วนออกจากระบบ -->
         <?php if (is_logged_in()): ?>
         <div class="user-box">
             <span class="user-name">
@@ -90,6 +97,7 @@ $current = basename($_SERVER['PHP_SELF']);
                 <i class="fas fa-sign-out-alt me-1"></i> ออกจากระบบ
             </a>
         </div>
+        <!-- จบ -->
         <?php endif; ?>
     </header>
 

@@ -56,6 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $page_title = 'ยื่นคำขอฝึกงาน';
 require '../includes/header.php';
 ?>
+
+<!-- เริ่มส่วนของ HTML  -->
 <!DOCTYPE html>
 <html lang="th">
 
@@ -66,6 +68,7 @@ require '../includes/header.php';
 
 </head>
 
+<!-- เริ่มส่วนคำขอฝึกงาน (ช่องคำขอฝึกงาน) -->
 <body>
 
     <h1><i class="fas fa-file-signature" style="color:var(--swu-red); margin-right: 10px;"></i>ยื่นคำขอฝึกงาน</h1>
@@ -81,13 +84,15 @@ require '../includes/header.php';
         <ul><?php foreach ($errors as $e): ?><li><?= h($e) ?></li><?php endforeach; ?></ul>
     </div>
     <?php endif; ?>
-
+    
+    <!-- เริ่ม ส่วนแบบฟอร์มคำขอฝึกงาน -->
     <div class="card card-form">
         <div class="card-header">
             <h2><i class="fas fa-edit me-2" style="margin-right: 10px;"></i>แบบฟอร์มคำขอ</h2>
         </div>
         <form method="POST" class="form" style="padding:24px">
-            <label>
+            <!-- ส่วนการกรอกข้อมูลรายละเอียด -->
+            <label></label>
                 บริษัท *
                 <select name="company_id" required>
                     <option value="">— เลือกบริษัท —</option>
@@ -128,13 +133,17 @@ require '../includes/header.php';
                 <textarea name="description" rows="4"
                     placeholder="อธิบายงานที่ต้องการฝึก, เหตุผลที่เลือกบริษัทนี้ ฯลฯ"></textarea>
             </label>
+            <!-- จบ  ส่วนการกรอกข้อมูลรายละเอียด  -->
 
+            <!-- ส่วนการกดยกเลิก และส่งคำขอ -->
             <div class="actions">
                 <a href="dashboard.php" class="btn"><i class="fas fa-times me-1"></i> ยกเลิก</a>
                 <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane me-1"></i> ส่งคำขอ</button>
             </div>
+            <!-- จบ ส่วนการกดยกเลิก และส่งคำขอ -->
         </form>
     </div>
+    <!-- จบ ส่วนแบบฟอร์มคำขอฝึกงาน -->
 
 
 </body>

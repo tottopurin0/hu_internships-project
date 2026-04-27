@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
+    <!-- เริ่ม style -->
     <style>
     .teacher-hero {
         background: linear-gradient(135deg, rgba(196, 18, 45, 0.9), rgba(33, 37, 41, 0.9)), url('./img/berner.jpg') center/cover;
@@ -18,7 +19,6 @@
         color: white;
         text-align: center;
         margin-top: 0;
-        /* <--- เปลี่ยนตรงนี้เป็น 0 (แบนเนอร์จะชิดขอบพอดี) */
         margin-bottom: 40px;
     }
 
@@ -40,27 +40,28 @@
         box-shadow: 0 15px 30px rgba(196, 18, 45, 0.15);
         border-color: #c4122d;
     }
-
+    /* ตกแต่งกรอบรูป */
     .profile-img-wrapper {
-        width: 180px;         /* 1. เปลี่ยนขนาดความกว้าง (ปรับตัวเลขได้ตามต้องการ) */
-        height: 250px;        /* 2. เปลี่ยนขนาดความสูง ให้เป็นทรงสี่เหลี่ยมแนวตั้ง */
+        width: 180px;         
+        height: 250px;        
         background-color: #f8f9fa;
-        border-radius: 8px;   /* 3. **แก้ตรงนี้** จาก 50% เป็น 8px (ขอบมนนิดๆ ถ้าอยากได้เหลี่ยมเป๊ะๆ ให้ใส่ 0) */
+        border-radius: 8px;   
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 40px 0 0;   /* 4. **แก้ตรงนี้** เปลี่ยน margin เพื่อไม่ให้อยู่ตรงกลาง และเว้นระยะด้านขวา 20px ให้ข้อความ */
-        flex-shrink: 0;       /* 5. เพิ่มคำสั่งนี้ ป้องกันไม่ให้รูปถูกบีบจนแบนเวลาหน้าจอแคบ */
+        margin: 0 40px 0 0;   
+        flex-shrink: 0;       
         overflow: hidden;
         border: 3px solid white;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
+    /* ตกแต่งรูป */
     .profile-img-wrapper img {
-        width: 100%;          /* 6. **แก้ตรงนี้** เปลี่ยนจาก 85% เป็น 100% เพื่อให้รูปเต็มกรอบสี่เหลี่ยมพอดี */
-        height: 100%;         /* 7. **แก้ตรงนี้** เปลี่ยนจาก 85% เป็น 100% */
+        width: 100%;          
+        height: 100%;         
         object-fit: cover;
-        border-radius: 0;     /* 8. **แก้ตรงนี้** เอา 50% ออก เพื่อไม่ให้ตัวรูปโดนตัดเป็นวงกลมซ้อนข้างในอีกที */
+        border-radius: 0;     
     }
 
     .click-hint {
@@ -94,12 +95,15 @@
         text-align: center;
     }
     </style>
+    <!-- จบส่วน style -->
 </head>
 
+<!-- เริ่มส่วนรายชื่อ -->
 <body class="bg-light">
 
     <?php include 'navbar.php'; ?>
 
+    <!-- กล่องด้านบนที่เป็นรูปภาพพร้อมตัวอักษร คณะผู้จัดทำ -->
     <div class="teacher-hero pb-5">
         <div class="container py-4">
             <h1 class="fw-bold mb-3">
@@ -110,7 +114,7 @@
         </div>
     </div>
     <div class="container py-5 mt-4" id="showcase">
-
+        <!-- ส่วนคำว่ารายชื่อสีแดง -->
         <h3 class="fw-bold text-danger mb-4 border-start border-4 border-danger ps-3">
             <i class="fa-solid fa-user"></i> รายชื่อ
         </h3>

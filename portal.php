@@ -18,6 +18,8 @@ $page_title = 'Portal';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- เริ่มส่วน style -->
     <style>
     .portal-title {
         color: var(--swu-red);
@@ -40,9 +42,7 @@ $page_title = 'Portal';
 
     .reg-banner {
         background-color: #fff8e1;
-        /* พื้นหลังสีเหลืองอ่อน */
         border-left: 6px solid #ffc107 !important;
-        /* ขีดซ้ายสีเหลืองทอง */
         border-radius: 12px;
         transition: all 0.3s ease;
     }
@@ -66,16 +66,19 @@ $page_title = 'Portal';
     }
     </style>
 </head>
+<!-- จบส่วน style -->
 
 <body><?php include 'navbar.php'; ?>
     <div class="portal-wrapper">
+        <!-- ส่วนหัวเรื่อง -->
         <div class="container pb-5">
             <div class="text-center mb-5">
                 <h1 class="portal-title">Internships System</h1>
                 <p class="portal-subtitle">เลือกระบบการเข้าใช้งานให้ตรงกับบทบาทของคุณ</p>
             </div>
+        <!-- จบส่วนหัวเรื่อง -->
 
-            <!-- ================= กล่องสำหรับลงทะเบียนนิสิตใหม่ (เพิ่มใหม่) ================= -->
+            <!-- ================= กล่องสำหรับลงทะเบียนนิสิตใหม่ ================= -->
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8">
                     <div class="card border-0 shadow-sm reg-banner p-4">
@@ -97,7 +100,7 @@ $page_title = 'Portal';
                     </div>
                 </div>
             </div>
-
+            <!-- กล่องนิสิต -->
             <div class="row g-4 justify-content-center mb-5">
                 <div class="col-lg-3 col-md-6">
                     <a href="login/login_student.php" class="portal-card bg-p1">
@@ -112,6 +115,7 @@ $page_title = 'Portal';
                         </div>
                     </a>
                 </div>
+                <!-- กล่องอาจารย์ -->
                 <div class="col-lg-3 col-md-6">
                     <a href="login/login_teacher.php" class="portal-card bg-p2">
                         <div class="portal-icon">
@@ -125,6 +129,7 @@ $page_title = 'Portal';
                         </div>
                     </a>
                 </div>
+                <!-- กล่องเจ้าหน้าที่คณะ -->
                 <div class="col-lg-3 col-md-6">
                     <a href="login/login_staff.php" class="portal-card bg-p3">
                         <div class="portal-icon">
@@ -138,6 +143,7 @@ $page_title = 'Portal';
                         </div>
                     </a>
                 </div>
+                <!-- กล่องคู่มือการใช้งาน -->
                 <div class="col-lg-3 col-md-6">
                     <a href="flowchart.php" class="portal-card bg-p4">
                         <div class="portal-icon">
@@ -155,7 +161,8 @@ $page_title = 'Portal';
             
         </div>
     </div>
-
+    
+    <!-- ตัวเชื่อมข้อมูล -->
     <?php include 'footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

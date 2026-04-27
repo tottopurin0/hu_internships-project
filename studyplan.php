@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-    /* ================= แบนเนอร์ด้านบนสุด (ตามรูปเป๊ะ) ================= */
+    /* ================= แบนเนอร์ด้านบนสุด  ================= */
     .studyplan-hero {
         background: linear-gradient(135deg, rgba(196, 18, 45, 0.9), rgba(33, 37, 41, 0.9)), url('./img/berner.jpg') center/cover;
         padding: 80px 0 !important;
@@ -199,7 +199,7 @@
 
     <?php include 'navbar.php'; ?>
 
-    <!-- ================= แบนเนอร์สีแดงด้านบน ตามเรฟเฟอเรนซ์ ================= -->
+    <!-- กล่องด้านบนที่เป็นรูปภาพพร้อมตัวอักษร รายละเอียดของหลักสูตร -->
     <div class="studyplan-hero pb-5">
         <div class="container py-4">
             <h1 class="fw-bold mb-3"><i class="fas fa-graduation-cap mb-2"></i><br>รายละเอียดของหลักสูตร</h1>
@@ -209,10 +209,10 @@
         </div>
     </div>
 
-    <!-- ================= เนื้อหา ================= -->
+    <!-- ================= เริ่มส่วนเนื้อหา ================= -->
     <div class="studyplan-wrapper">
         <div class="container" style="max-width: 1100px;">
-
+            <!-- โครงสร้างหลักศูตร -->
             <div class="text-center mb-5">
                 <h3 class="fw-bold" style="color: #212529;">โครงสร้างหลักสูตรและแผนการศึกษา</h3>
                 <span class="badge bg-dark rounded-pill px-4 py-2 fs-6 mt-3 shadow-sm">
@@ -252,7 +252,9 @@
                     </div>
                 </div>
             </div>
+            <!-- จบส่วนโครงสร้างหลักสูตร -->
 
+            <!-- เริ่มส่วนแผนการศึกษา -->
             <div class="text-center mb-4 mt-2">
                 <h3 class="fw-bold text-danger">แผนการศึกษา (Study Plan)</h3>
                 <p class="text-muted small">คลิกเลือกชั้นปีเพื่อดูรายวิชาที่ต้องเรียนในแต่ละภาคการศึกษา</p>
@@ -449,7 +451,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- จบส่วนแผนการศึกษา -->
         </div>
     </div>
 

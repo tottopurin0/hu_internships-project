@@ -192,7 +192,7 @@ VALUES
 ('staff03', '$2y$10$2p/qUwhEBq1JCRHy/1jY/uPUaG30W2amvu/hPXItYA3BLSsWhP5RC', 'กิตติ', 'นำชัย', 'วิศวกรรมศาสตร์', 'เจ้าหน้าที่บริหารงานทั่วไป', 'kitti.n@faculty.ac.th', '02-111-4444');
 
 -- สร้างตารางเก็บข้อมูลนิสิต
-CREATE TABLE `students` (
+CREATE TABLE `name_students` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `student_id` VARCHAR(15) NOT NULL COMMENT 'รหัสนิสิต',
   `full_name` VARCHAR(100) NOT NULL COMMENT 'ชื่อ-นามสกุล',
@@ -201,7 +201,7 @@ CREATE TABLE `students` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- เพิ่มข้อมูลรายชื่อนิสิตปี1-4
-INSERT INTO students (student_id, full_name, year_level) VALUES
+INSERT INTO name_students (student_id, full_name, year_level) VALUES
 ('68105010018', 'อคิราห์ เลิศวรากร', 1),
 ('68105010019', 'ลลิลพัทธ์ อัศวเมธี', 1),
 ('68105010020', 'พราวด์ฟ้า นิรันดร์กาล', 1),

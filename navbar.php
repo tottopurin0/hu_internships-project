@@ -4,20 +4,23 @@
 <nav class="navbar navbar-expand-xl custom-navbar shadow-sm sticky-top" style="background-color: white;">
     <div class="container-fluid px-lg-5 py-2 py-lg-0">
 
-        <!-- โลโก้ มศว (อัปเดตลิงก์รูปภาพใหม่ ไม่แตกแน่นอน) -->
+        <!-- โลโก้ มศว  -->
         <a class="navbar-brand d-flex align-items-center" href="index.php">
             <img src="./img/swu_Logo.png" alt="SWU Logo" height="50">
             <div class="logo-text ms-2">
+                <!-- ส่วนชื่อมหาวิทยาลัยและสาขา -->
                 <h1 class="mb-0 text-dark fw-bold" style="font-size: 18px;">มหาวิทยาลัยศรีนครินทรวิโรฒ</h1>
                 <p class="mb-0 text-muted" style="font-size: 11px; letter-spacing: 0.5px;">SRINAKHARINWIROT UNIVERSITY |
                     INFORMATION STUDIES</p>
             </div>
         </a>
-
+        <!-- ส่วนที่ลดรูปตัวเลือกต่างๆ -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        <!-- จบส่วนนี้ -->
+        
+        <!--  ส่วนตัวเลือกด้านขวา  -->
         <div class="collapse navbar-collapse justify-content-end" id="navMenu">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item"><a class="nav-link" href="index.php">หน้าแรก</a></li>
@@ -33,6 +36,7 @@
                         <li><a class="dropdown-item py-2 fw-medium" href="studyplan.php">แผนการศึกษา</a></li>
                     </ul>
                 </li>
+                <!-- จบส่วนตัวเลือกด้านขวา -->
 
                 <!-- ระบบตรวจสอบ Login -->
                 <?php if(isset($_SESSION['user_id'])): ?>

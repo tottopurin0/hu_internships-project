@@ -24,6 +24,7 @@ $sample_staff = $conn->query('SELECT username FROM faculty_staff LIMIT 1')->fetc
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- เริ่ม style -->
     <style>
     body {
         font-family: 'Kanit', sans-serif;
@@ -112,9 +113,10 @@ $sample_staff = $conn->query('SELECT username FROM faculty_staff LIMIT 1')->fetc
     }
     </style>
 </head>
+<!-- จบ style -->
 
 <body class="clean-login-bg">
-
+<!-- ส่วนกล่อง login เจ้าหน้าที่คณะ  -->
     <div class="clean-login-card">
 
         <div class="login-icon-circle">
@@ -155,7 +157,7 @@ $sample_staff = $conn->query('SELECT username FROM faculty_staff LIMIT 1')->fetc
                 กลับไปหน้าเลือกระบบ</a>
         </div>
     </div>
-
+<!-- จบ ส่วนกล่อง login เจ้าหน้าที่คณะ  -->
 </body>
 
 </html>

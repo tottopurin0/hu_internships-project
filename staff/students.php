@@ -94,6 +94,7 @@ if ($action === 'list') {
     $students = $conn->query('SELECT s.*, t.first_name AS advisor_fname, t.last_name AS advisor_lname FROM student s LEFT JOIN teacher t ON s.advisor_id = t.teacher_id ORDER BY s.student_code')->fetch_all(MYSQLI_ASSOC);
     ?>
 
+<!-- เริ่่ม ส่วนการจัดการนิสิต -->
 <div style="margin-bottom: 20px; display: flex; justify-content: sp-between; align-items: center;">
     <h1>
       <i class="fas fa-users me-2" style="margin-right: 20px;"></i>จัดการนิสิต
@@ -158,7 +159,7 @@ if ($action === 'list') {
         }
     }
     ?>
-
+<!-- ส่วนการเพิ่มหรือแก้ไขนิสิต -->
 <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
     <h1>
       <i class="fas fa-users me-2"style="margin-right: 10px;"></i><?= $action === 'add' ? 'เพิ่มนิสิตใหม่' : 'แก้ไขนิสิต' ?>
@@ -222,7 +223,9 @@ if ($action === 'list') {
                     placeholder="เช่น วิทยาการคอมพิวเตอร์">
             </label>
         </div>
-
+        <!-- จบ ส่วนการเพิ่มหรือแก้ไขนิสิต -->
+        
+        <!-- ส่วนการเพิ่มหรือแก้ไขอาจารย์ -->
         <div class="row">
             <label>GPA
                 <input type="number" step="0.01" min="0" max="4" name="gpa"
@@ -260,6 +263,7 @@ if ($action === 'list') {
                 <?= $action === 'add' ? 'เพิ่มนิสิต' : 'บันทึกการเปลี่ยนแปลง' ?>
             </button>
         </div>
+        <!-- จบ ส่วนการเพิ่มหรือแก้ไขอาจารย์ -->
 
     </form>
 </div>

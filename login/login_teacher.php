@@ -24,6 +24,7 @@ $sample_teachers = $conn->query('SELECT username FROM teacher LIMIT 1')->fetch_a
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- เริ่ม style -->
     <style>
     body {
         font-family: 'Kanit', sans-serif;
@@ -112,11 +113,12 @@ $sample_teachers = $conn->query('SELECT username FROM teacher LIMIT 1')->fetch_a
     }
     </style>
 </head>
+<!-- จบ style -->
 
 <body class="clean-login-bg">
 
     <div class="clean-login-card">
-
+<!-- ส่วนกล่อง login อาจารย์ -->
         <div class="login-icon-circle">
             <i class="fas fa-chalkboard-teacher"></i>
         </div>
@@ -150,11 +152,12 @@ $sample_teachers = $conn->query('SELECT username FROM teacher LIMIT 1')->fetch_a
         </form>
 
         <div class="mt-4">
-            <a href="../portal.php" class="text-muted small fw-bold text-decoration-none"><i class="fas fa-arrow-left"></i>
-                กลับไปหน้าเลือกระบบ</a>
+            <a href="../portal.php" class="text-muted small fw-bold text-decoration-none">
+                <i class="fas fa-arrow-left"></i>กลับไปหน้าเลือกระบบ
+            </a>
         </div>
     </div>
-
+<!-- จบ ส่วนกล่อง login อาจารย์ -->
 </body>
 
 </html>

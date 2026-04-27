@@ -96,6 +96,7 @@ require '../includes/header.php';
     <meta charset="UTF-8">
     <title><?= $page_title ?? 'สถานะคำขอ' ?></title>
     <link rel="stylesheet" href="/hu_internships-project/assets/css/style.css">
+    <!-- เริ่มส่วน style -->
     <style>
     .progress-tracker {
         display: flex !important;
@@ -191,19 +192,15 @@ require '../includes/header.php';
 
     ul.timeline {
         margin-top: 20px !important;
-        /* ดันลงมาจากแถบหัวข้อสีดำ */
         padding: 0 20px 20px 20px !important;
-        /* เว้นระยะขอบ ซ้าย ขวา ล่าง ไม่ให้ชิดกรอบ */
     }
 
     ul.timeline li {
         margin-bottom: 15px !important;
-        /* เว้นระยะห่างระหว่างแต่ละกล่องประวัติ จะได้ดูคลีนๆ อ่านง่ายขึ้น */
     }
 
     .card-form dl.kv {
         padding: 25px 20px !important;
-        /* เว้นระยะห่างด้านใน (บน-ล่าง 25px, ซ้าย-ขวา 20px) ไม่ให้ชิดขอบแดง */
         margin: 0 !important;
     }
 
@@ -214,9 +211,10 @@ require '../includes/header.php';
     }
     </style>
 </head>
+<!-- จบ style -->
 
 <body>
-
+<!-- ส่วนติดตามสถานะ -->
     <h1><i class="fas fa-tasks" style="color:var(--swu-red); margin-right: 10px;"></i>สถานะคำขอฝึกงาน</h1>
 
     <?php if ($detail):
@@ -239,7 +237,7 @@ require '../includes/header.php';
         $s4 = "cancelled";
     }
     ?>
-
+    <!-- ส่วนกล่องแสดงผล -->
     <div class="progress-tracker">
         <div class="progress-step <?= $s1 ?>">
             <div class="step-icon"><i class="fas fa-file-signature"></i></div>
@@ -260,7 +258,10 @@ require '../includes/header.php';
             <div class="step-label">ไม่ผ่าน/ยกเลิก</div>
         </div>
     </div>
+    <!-- จบส่วนกล่องแสดงผล -->
+    <!-- จบ ส่วนติดตามสถานะ -->
 
+    <!-- ส่วนแสดงผลการกรอกข้อมูล -->
     <div class="card card-form">
         <div class="card-header">
             <h2><i class="fas fa-file-alt me-2" style="margin-right: 10px;"></i>คำขอ #<?= (int)$detail['request_id'] ?></h2>
@@ -284,7 +285,6 @@ require '../includes/header.php';
             <dd><?= h($detail['submitted_at']) ?></dd>
         </dl>
     </div>
-
     <div class="card card-accent">
         <div class="card-header">
             <h3><i class="fas fa-stream me-2" style="margin-right: 10px;"></i>ประวัติการเปลี่ยนสถานะ</h3>
@@ -303,7 +303,9 @@ require '../includes/header.php';
         </ul>
         <?php endif; ?>
     </div>
+    <!-- จบ ส่วนแสดงผลการกรอกข้อมูล -->
 
+    <!-- ส่วนบันทึกการนิเทศ -->
     <div class="card card-table">
         <div class="card-header">
             <h3><i class="fas fa-clipboard-check me-2" style="margin-right: 10px;"></i>บันทึกการนิเทศ</h3>
@@ -334,7 +336,9 @@ require '../includes/header.php';
         </table>
         <?php endif; ?>
     </div>
+    <!-- จบ ส่วนบันทึกการนิเทศ -->
 
+    <!-- เริ่ม ส่วนคำขอการฝึกงาน -->
     <?php else: ?>
     <div class="card card-table">
         <div class="card-header">
@@ -370,6 +374,7 @@ require '../includes/header.php';
         <?php endif; ?>
     </div>
     <?php endif; ?>
+    <!-- จบ ส่วนคำขอการฝึกงาน -->
 
 </body>
 

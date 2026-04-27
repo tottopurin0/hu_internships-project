@@ -23,7 +23,6 @@
     <!-- CSS เฉพาะสำหรับหน้า Flowchart -->
     <style>
     /* แบนเนอร์ด้านบน */
-    /* แบนเนอร์ด้านบน */
     .flowchart-hero {
         background: linear-gradient(135deg, rgba(196, 18, 45, 0.9), rgba(33, 37, 41, 0.9)), url('./img/berner.jpg') center/cover;
         padding: 80px 0;
@@ -179,7 +178,7 @@
     <!-- ดึง Navbar แบบ PHP -->
     <?php include 'navbar.php'; ?>
 
-    <!-- แบนเนอร์หัวเรื่อง (Header) -->
+    <!-- กล่องด้านบนที่เป็นรูปภาพพร้อมตัวอักษร ขั้นตอนการดำเนินงาน -->
     <div class="flowchart-hero pb-5">
         <div class="container py-4">
             <h1 class="fw-bold mb-3"><i class="fas fa-project-diagram mb-2"></i><br>ขั้นตอนการดำเนินงาน Internship</h1>
@@ -195,7 +194,7 @@
             <div class="col-lg-8">
                 <div class="timeline-section">
 
-                    <!-- ขั้นตอนที่ 1 -->
+                    <!-- ขั้นตอนที่ 1 นิสิตยื่นฝึกงาน-->
                     <div class="timeline-step">
                         <div class="timeline-circle bg-color-red">1</div>
                         <div class="timeline-card border-start border-danger border-4">
@@ -206,7 +205,7 @@
                         </div>
                     </div>
 
-                    <!-- ขั้นตอนที่ 2 -->
+                    <!-- ขั้นตอนที่ 2 รับเรื่องเข้าระบบ-->
                     <div class="timeline-step">
                         <div class="timeline-circle bg-color-yellow">2</div>
                         <div class="timeline-card border-start border-warning border-4">
@@ -222,7 +221,7 @@
                         </div>
                     </div>
 
-                    <!-- ขั้นตอนที่ 3 -->
+                    <!-- ขั้นตอนที่ 3 อาจารย์ที่ปรึกษาพิจารณา-->
                     <div class="timeline-step">
                         <div class="timeline-circle bg-color-blue">3</div>
                         <div class="timeline-card border-start border-primary border-4">
@@ -238,7 +237,7 @@
                         </div>
                     </div>
 
-                    <!-- ขั้นตอนที่ 4 -->
+                    <!-- ขั้นตอนที่ 4 ออกใบส่งตัว-->
                     <div class="timeline-step">
                         <div class="timeline-circle bg-color-purple">4</div>
                         <div class="timeline-card border-start border-4" style="border-color: #6f42c1 !important;">
@@ -254,7 +253,7 @@
                         </div>
                     </div>
 
-                    <!-- ขั้นตอนที่ 5 -->
+                    <!-- ขั้นตอนที่ 5 เสร็จสิ้น-->
                     <div class="timeline-step">
                         <div class="timeline-circle bg-color-green">5</div>
                         <div class="timeline-card border-start border-success border-4">

@@ -54,7 +54,7 @@
     font-weight: 500;
 }
 
-/* โซเชียลไอคอน เฟสบุ๊ค & ไอจี */
+/* รูปไอคอน เฟสบุ๊ค & ไอจี */
 .social-icon-box {
     display: flex;
     align-items: center;
@@ -83,7 +83,7 @@
     margin-top: 50px;
 }
 
-/* ================= E-MAIL แบบไม่มีกรอบ (ไอคอนซองจดหมาย) ================= */
+/* ================= ไอคอนซองจดหมาย e-mail ================= */
 .simple-email-box {
     display: flex;
     align-items: center;
@@ -95,15 +95,11 @@
 
 .simple-email-box:hover {
     transform: translateY(-3px);
-    /* ลอยขึ้นตอนชี้เมาส์ */
 }
 
-/* แก้ไขไอคอนเป็นรูปซองจดหมาย */
 .simple-email-box .email-icon {
     font-size: 32px;
-    /* ปรับขนาดให้พอดีกับซองจดหมาย */
     color: rgba(255, 255, 255, 0.8);
-    /* สีขาวโปร่งแสง */
     margin-right: 12px;
     line-height: 1;
 }
@@ -120,10 +116,12 @@
 .simple-email-box .email-text-main {
     color: white;
     font-size: 16px;
-    /* ปรับให้พอดีกับความสวยงาม */
     font-weight: 700;
 }
 </style>
+<!-- จบส่วนstyle -->
+
+<!-- เริ่มfooter -->
 <footer class="swu-footer-custom mt-auto">
     <div class="container px-lg-5">
         <div class="row justify-content-between g-5">
@@ -187,17 +185,12 @@
                             </a>
                         </ul>
                     </div>
-
-
-
-
-
                 </div>
             </div>
 
         </div>
     </div>
-
+    <!-- ส่วนล่างสีแดงเข้มล่างสุด -->
     <div class="footer-bottom">
         <div class="container">
             คณะมนุษยศาสตร์ หลักสูตรฯ สารสนเทศศึกษา |  Faculty of Humanities, Information Studies

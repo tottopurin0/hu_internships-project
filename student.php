@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>คณาจารย์ประจำหลักสูตร - IS SWU</title>
+    <title>รายชื่อนิสิต - IS SWU</title>
     <!-- ไฟล์ CSS Bootstrap และ FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -130,6 +130,7 @@
 
     <?php include 'navbar.php'; ?>
 
+    <!-- กล่องด้านบนที่เป็นรูปภาพพร้อมตัวอักษร รายชื่อนิสิต -->
     <div class="student-hero pb-5">
         <div class="container py-4">
             <h1 class="fw-bold mb-3">
@@ -157,7 +158,7 @@
             }
         }
         ?>
-
+        <!-- กล่องบอกจำนวนนิสิต ชั้นปี 1-4 -->
         <div class="row g-3 mb-5 mx-auto" style="max-width: 900px;">
             <div class="col-6 col-md-3">
                 <div class="status-card">
@@ -184,7 +185,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <!-- กล่องเลือกชั้นปี1-4 -->
         <div class="custom-tabs">
             <button class="custom-btn active" onclick="switchTab('year1')">ชั้นปีที่ 1</button>
             <button class="custom-btn" onclick="switchTab('year2')">ชั้นปีที่ 2</button>
@@ -192,6 +194,7 @@
             <button class="custom-btn" onclick="switchTab('year4')">ชั้นปีที่ 4</button>
         </div>
 
+        <!-- ส่วนดึงข้อมูลจาก DBeaber -->
         <?php for($y=1; $y<=4; $y++): ?>
         <div id="year<?php echo $y; ?>" class="custom-tab-pane <?php echo ($y==1)?'active':''; ?>">
             <div class="student-list-card mx-auto" style="max-width: 900px;">

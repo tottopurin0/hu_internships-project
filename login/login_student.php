@@ -22,6 +22,7 @@ unset($_SESSION['login_error']);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- เริ่ม style -->
     <style>
     body {
         font-family: 'Kanit', sans-serif;
@@ -110,9 +111,10 @@ unset($_SESSION['login_error']);
     }
     </style>
 </head>
+<!-- จบ style -->
 
 <body class="clean-login-bg">
-
+<!-- ส่วนกล่อง login นิสิต  -->
     <div class="clean-login-card">
 
         <div class="login-icon-circle">
@@ -152,7 +154,7 @@ unset($_SESSION['login_error']);
                 เลือกระบบอื่น</a>
         </div>
     </div>
-
+<!-- จบ ส่วนกล่อง login นิสิต  -->
 </body>
 
 </html>

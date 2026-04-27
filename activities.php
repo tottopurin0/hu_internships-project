@@ -34,15 +34,12 @@
         overflow-y: hidden;
         scroll-behavior: smooth;
         -ms-overflow-style: none;
-        /* สำหรับ IE และ Edge */
         scrollbar-width: none;
-        /* สำหรับ Firefox */
         padding-bottom: 15px;
     }
 
     #activity-grid::-webkit-scrollbar {
         display: none;
-        /* ซ่อน Scrollbar ของ Chrome, Safari, Opera */
     }
 
     /* สไตล์ของปุ่มเลื่อน */
@@ -80,12 +77,12 @@
         right: -20px;
     }
 
+/* ซ่อนปุ่มในมือถือให้ใช้นิ้วปัดแทน */
     @media (max-width: 768px) {
         .slide-btn {
             display: none;
         }
 
-        /* ซ่อนปุ่มในมือถือให้ใช้นิ้วปัดแทน */
     }
 
     .indent {
@@ -99,9 +96,7 @@
         justify-content: center;
         align-items: center;
         gap: 8px;
-        /* ระยะห่างระหว่างจุด */
         margin-top: 20px;
-        /* ระยะห่างจากตัวการ์ดด้านบน */
     }
 
     /* รูปร่างของจุดปกติ (สีเทา) */
@@ -109,22 +104,16 @@
         width: 12px;
         height: 12px;
         background-color: #e0e0e0;
-        /* สีเทาอ่อน */
         border-radius: 50%;
-        /* ทำให้เป็นวงกลม */
         cursor: pointer;
         transition: all 0.3s ease;
-        /* ให้ตอนเปลี่ยนสีสมูทขึ้น */
     }
 
     /* รูปร่างของจุดที่ถูกเลือก (สีแดงยาว) */
     .pagination-dots .dot.active {
         width: 32px;
-        /* ขยายความกว้างให้เป็นแคปซูล */
         background-color: #c8102e;
-        /* สีแดงแบบในรูป */
         border-radius: 10px;
-        /* ขอบมน */
     }
     </style>
 </head>
@@ -132,7 +121,8 @@
 <body style="background-color: #f8f9fa;">
 
     <?php include 'navbar.php'; ?>
-<!-- กล่องด้านบนที่เป็นรูปภาพพร้อมตัวอักาณ -->
+
+<!-- กล่องด้านบนที่เป็นรูปภาพพร้อมตัวอักษร ข่างสารกิจกรรม -->
     <div class="activity-hero pb-5">
         <div class="container py-4">
             <h1 class="fw-bold mb-3"><i class="fas fa-camera-retro mb-2"></i><br>ข่าวสารกิจกรรม & IS Showcase</h1>
@@ -140,6 +130,7 @@
         </div>
     </div>
 <!-- จบกล่องด้านบน -->
+
     <div class="container pt-2 pb-5">
         <!-- กล่องตัวเลือกกิจกรรม -->
         <div class="text-center filter-btn-group mb-5">
@@ -155,6 +146,7 @@
                 <i class="fas fa-chevron-left"></i>
             </button>
         <!-- จบกล่องตัวเลือก -->
+          
             <div class="row g-4" id="activity-grid">
                 <!-- การ์ดกิจกรรมที่ 1 -->
                 <div class="col-lg-4 col-md-6 a-item showcase" style="min-width: 320px;">
@@ -1333,6 +1325,9 @@
         });
         setTimeout(updatePagination, 50);
     }
+    
+    /* ฟังก์ชันสำหรับอัปเดตสถานะของจุด (Pagination dots) 
+  ให้ตรงกับตำแหน่งการเลื่อน (Scroll) ของคอนเทนเนอร์ปัจจุบัน*/
 
     function updatePagination() {
         const currentDots = document.querySelectorAll('.pagination-dots .dot');

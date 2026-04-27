@@ -73,6 +73,7 @@ $page_title = 'จัดการบริษัท';
 require '../includes/header.php';
 ?>
 
+<!-- เริ่ม การจัดการคู๋บริษัท -->
 <h1>
   <i class="fas fa-building me-2" style="color:var(--swu-red); margin-right: 10px;"></i>จัดการบริษัทคู่สัญญา
 </h1>
@@ -88,12 +89,14 @@ require '../includes/header.php';
   </div>
 <?php endif; ?>
 
+<!-- การเพิ่มและแก้ไข บริษัท -->
 <div class="card card-form">
   <div class="card-header">
     <h2>
       <i class="fas fa-<?= $edit?'pen':'plus' ?>-circle me-2" style="margin-right: 10px;"></i><?= $edit ? 'แก้ไขบริษัท #'.(int)$edit['company_id'] : 'เพิ่มบริษัทใหม่' ?>
     </h2>
   </div>
+  <!-- ชุดข้อมูล -->
   <form method="POST" class="form" style="padding:24px">
     <input type="hidden" name="company_id" value="<?= (int)($edit['company_id'] ?? 0) ?>">
     <label>ชื่อบริษัท *
@@ -139,7 +142,9 @@ require '../includes/header.php';
     </div>
   </form>
 </div>
+<!-- จบ การเพิ่มข้อมูล --> 
 
+<!-- การโชว์รายการบริษัท -->
 <div class="card card-table">
   <div class="card-header">
     <h2>
@@ -185,3 +190,4 @@ require '../includes/header.php';
     </table>
   <?php endif; ?>
 </div>
+<!-- จบ การโชว์รายการบริษัท -->
