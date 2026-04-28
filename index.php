@@ -105,7 +105,7 @@
         <div class="carousel-inner">
             <!-- รูปที่ 1 พระพันปีหลวง-->
             <div class="carousel-item active">
-                <img src="./img/sirigit.jpg" alt="sirigit">
+                <img src="./img/sirigit01.jpg" alt="sirigit">
                 <div class="carousel-overlay"></div>
             </div>
 
