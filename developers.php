@@ -218,7 +218,7 @@
 
                         <!-- ข้อความประวัติ โต๋-->
                         <div>
-                           <h6 class="fw-bold fs-4 text-dark mb-1">ภูรินทร์ กูลมนุญ</h6>
+                           <h6 class="fw-bold fs-4 text-dark mb-1">ภูรินท์ กูลมนุญ</h6>
                            <p class="text-secondary fw-bold mb-0" style="font-size: 18px;">โต๋</p>
                            <p class="text-muted mb-0" style="font-size: 18px; line-height: 1.5;">67101010641 <br> purin.goonmanoon@g.swu.ac.th </p>
                         </div>
